@@ -5,13 +5,13 @@
 	font-family: "Poppins", sans-serif;
 }
 
-.topbar {
+.navbar {
 	position: fixed;
 	background: #fff;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.08);
 	height: 60px;
 	width: 100%;
-	padding: 0 30px;
+	padding: 0 20px;
 	display: grid;
 	grid-template-columns: 2fr 10fr 0.4fr 1fr;
 	align-items: center;
@@ -46,32 +46,34 @@
 	
 }
 
-nav {
+  .nav-right {
 	background-color: #fff;
 	text-align: center;
+
   }
   
-  nav ul {
+  .nav-right ul {
 	list-style-type: none;
 	overflow: hidden;
 	display: flex;
   }
   
-  nav li {
+  .nav-right li {
 	float: left;
-	margin-right: 20px;
+	margin-right: 30px;
+	
 }
   
-  nav li a {
+.nav-right li a {
 	text-decoration: none;
 	color: black;
 	text-align: center;
 	transition: color 0.2s ease;
   }
   
-  nav li a:hover {
+  .nav-right li a:hover {
 	background-color: red;
   }
-/*
+
 
 
