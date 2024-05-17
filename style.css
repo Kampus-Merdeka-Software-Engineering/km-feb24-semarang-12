@@ -6,13 +6,14 @@
 }
 
 .navbar {
-	position: fixed;
+	position: absolute;
 	background: #fff;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.08);
 	height: 60px;
 	width: 100%;
-	padding: 0 20px;
-	display: grid;
+	padding: 0 10px;
+	margin-right: 50px;
+	display: flex;
 	grid-template-columns: 2fr 10fr 0.4fr 1fr;
 	align-items: center;
 	z-index: 1;
@@ -24,7 +25,8 @@
 }
 .search {
 	position: relative;
-	width: 60%;
+	margin: auto;
+	width: 40%;
 	justify-self: center;
 }
 
@@ -47,6 +49,7 @@
 }
 
   .nav-right {
+
 	background-color: #fff;
 	text-align: center;
 
@@ -75,5 +78,18 @@
 	background-color: red;
   }
 
+  aside {
+	flex: 50%;
+	background-color: #ddd;
+	padding: 30px;
+	position: absolute;
+  }
+
+  footer {
+	background-color: #333;
+	color: #fff;
+	padding: 10px;
+	text-align: center;
+  }
 
 
