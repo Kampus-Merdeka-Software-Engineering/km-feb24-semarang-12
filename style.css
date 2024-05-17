@@ -53,23 +53,19 @@ nav {
 	
   }
   
-  nav ul {
-	list-style: none; /* remove bullet points */
-	display: flex; /* make the list items display horizontally */
-	justify-content: space-between; /* space the links evenly */
-	overflow: hidden;
+  .navbar li {
+	margin-right: 20px; /* Menambahkan jarak antar item */
   }
   
-  nav li {
-	margin-right: 30px; /* add some space between links */
-	float: right;
-  }
-  
-  nav a {
-	color: black; /* white text color */
-	text-decoration: none; /* remove underline */
+  .navbar li a {
+	text-decoration: none; /* Menghilangkan garis bawah pada link */
+	color: black; /* Mengatur warna teks */
 	transition: color 0.2s ease; /* add a transition effect */
-  }
+	display: inline-block;
+	
+  }  
+  
+  
   
   nav a:hover {
 	color: red; /* light gray text color on hover */
