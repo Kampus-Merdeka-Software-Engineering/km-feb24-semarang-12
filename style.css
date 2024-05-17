@@ -22,7 +22,6 @@
 .logo h2{
 	color: aqua;
 }
-
 .search {
 	position: relative;
 	width: 60%;
@@ -48,25 +47,31 @@
 }
 
 nav {
-	background-color: #fff; /* dark gray background */
-	text-align: center; /* center the links */
-	
+	background-color: #fff;
+	text-align: center;
   }
   
-  .navbar li {
-	margin-right: 20px; /* Menambahkan jarak antar item */
+  nav ul {
+	list-style-type: none;
+	overflow: hidden;
+	display: flex;
   }
   
-  .navbar li a {
-	text-decoration: none; /* Menghilangkan garis bawah pada link */
-	color: black; /* Mengatur warna teks */
-	transition: color 0.2s ease; /* add a transition effect */
-	display: inline-block;
-	
-  }  
+  nav li {
+	float: left;
+	margin-right: 20px;
+}
   
-  
-  
-  nav a:hover {
-	color: red; /* light gray text color on hover */
+  nav li a {
+	text-decoration: none;
+	color: black;
+	text-align: center;
+	transition: color 0.2s ease;
   }
+  
+  nav li a:hover {
+	background-color: red;
+  }
+/*
+
+
