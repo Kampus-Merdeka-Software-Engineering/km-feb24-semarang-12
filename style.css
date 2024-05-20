@@ -5,7 +5,7 @@
 	font-family: "Poppins", sans-serif;
 }
 
-.navbar {
+ .navbar {
 	position: absolute;
 	background: #fff;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.08);
@@ -20,17 +20,17 @@
 
 }
 
-.logo h2{
+ .logo h2{
 	color: aqua;
 }
-.search {
+ .search {
 	position: relative;
 	margin: auto;
 	width: 40%;
 	justify-self: center;
 }
 
-.search input {
+ .search input {
 	width: 100%;
 	height: 40px;
 	padding: 0 40px;
@@ -40,7 +40,7 @@
 	border-radius:10px;
 }
 
-.search span {
+ .search span {
 	position: absolute;
 	right: 15px;
 	top: 10px;
@@ -48,34 +48,52 @@
 	
 }
 
-  .nav-right {
+ .nav-right {
 
 	background-color: #fff;
 	text-align: center;
 
   }
   
-  .nav-right ul {
+ .nav-right ul {
 	list-style-type: none;
 	overflow: hidden;
 	display: flex;
   }
   
-  .nav-right li {
+ .nav-right li {
 	float: left;
 	margin-right: 30px;
 	
 }
   
-.nav-right li a {
+ .nav-right li a {
 	text-decoration: none;
 	color: black;
 	text-align: center;
 	transition: color 0.2s ease;
   }
   
-  .nav-right li a:hover {
+ .nav-right li a:hover {
 	background-color: red;
+  }
+
+  .main h2{
+
+  }
+
+  .chart {
+	max-width: 900px;
+	height: 450px;
+	padding: 50px;
+	margin: 0 auto;
+	.chart-type {
+		text-align: center;
+		margin-bottom: 30px;
+		button{
+			padding: 10px 25px;
+		}
+	}
   }
 
   aside {
@@ -92,4 +110,4 @@
 	text-align: center;
   }
 
-
+ 

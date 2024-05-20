@@ -31,10 +31,27 @@
 					</ul>
 				</nav>
 		</div>
-		<div class="main"></div>
+	</div>
+	<div class="main">
+		<h2>Analytics</h2>
+		<div class="chart">
+			<div class="chart-type">
+				<button onclick="setChartType('line')">line</button>
+				<button onclick="setChartType('bar')">bar</button>
+				<button onclick="setChartType('doughnut')">doughnut</button>
+				<button onclick="setChartType('polarArea')">PolarArea</button>
+				<button onclick="setChartType('radar')">Radar</button>
+			</div>
+			<canvas id="chart1"></canvas>
+			
+			<!--<canvas id="chart2"></canvas>-->
+		</div>
+
+		  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+		<script src="chart1.js"></script>
+		<!--<script src="chart2.js"></script>-->
 	</div>
 </body> 
-<footer>
-	
-</footer>
+
 </html>
