@@ -1,8 +1,9 @@
+// Fetch the JSON data
 fetch('data.json')
     .then(response => response.json())
     .then(data => {
-        // Extract relevant information
-        const saleData = aggregateSalePricesByBorough(data);
+        // Aggregate and sort the sale prices by borough
+        const saleData = aggregateSalePricesByBorough(data).sort((a, b) => b["SALE PRICE"] - a["SALE PRICE"]);
 
         const boroughs = saleData.map(item => item.BOROUGH);
         const salePrices = saleData.map(item => item["SALE PRICE"]);
