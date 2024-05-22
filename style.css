@@ -4,6 +4,16 @@
 	box-sizing: border-box;
 	font-family: "Poppins", sans-serif;
 }
+body {
+	font-family: Arial, sans-serif;
+	line-height: 1.6;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	flex: 1;
+  }
+  
 
  .navbar {
 	position: relative;
@@ -102,37 +112,82 @@
 	
 }
   .main-analytics {
-	margin-bottom: 100px;
-	padding: 20px;
 	text-align: center;
+	flex: 1;
   }
 
   .chart {
-	max-width: 900px;
+	max-width: 800px;
 	height: 450px;
-	padding: 50px;
+	padding: 30px;
 	margin: 0 auto;
 
   }
-  aside {
-	position: static;
-	width: 30%;
-	padding-left: 15px;
-	margin-left: 15px;
-	float: right;
-	font-style: italic;
-	background-color: lightgray;
+  .aside-analytics aside{
+	background-color: #f9f9f9; /* Light grey background */
+	border: 2px solid #ccc; /* Light grey border */
+	padding: 10px; /* Space inside the aside */
+	margin: 0 0; /* Space outside the aside */
+	width: 300px; /* Fixed width */
+	float: right; /* Float to the right side of the container */
+	box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5); /* Slight shadow for depth */
+	font-family: Arial, sans-serif; /* Font style */
+	border-radius: 10px;
+  }
+  .aside-analytics aside h2 {
+	font-size: 1.5em; /* Larger heading */
+	margin-top: 0; /* No margin at the top */
+	color: #333; /* Dark grey color */
+  }
+  
+  .aside-analytics aside p {
+	font-size: 1em; /* Standard paragraph font size */
+	line-height: 1.6; /* Line height for readability */
+	color: #666; /* Medium grey color */
   }
 
+  /* Footer Styling */
   footer {
+	background-color: #333;
+	color: white;
+	padding: 8.5px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 20px;
+	clear: both;
+	flex-direction: column;
+  }
+  
+  footer p {
+	font-size: 0.9em;
+  }
+  
+  footer nav ul {
+	list-style-type: none;
+	display: flex;
+	gap: 10px; /* Space between the items */
+  }
+  
+  footer nav ul li a {
+	color: white;
+	text-decoration: none;
+  }
+  
+  footer nav ul li a:hover {
+	text-decoration: underline;
+  }
+  
+  /*footer {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	height: 40px; /* adjust the height to your liking */
-	background-color: brown; /* adjust the background color to your liking */
+	height: 40px; /* adjust the height to your liking 
+	background-color: brown; /* adjust the background color to your liking 
 	text-align: center;
 	padding: 0;
 	display: flex;
 	justify-content: left;
 	align-items: center;
   }
+  */
