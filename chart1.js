@@ -6,7 +6,8 @@ fetch('data.json')
   .then(response => response.json())
   .then(data => {
     const labels = Array.from(new Set(data.map(row => row.BOROUGH))).slice(0, limit);
-    const values = data.map(row => row.STATBUILT);
+    const values = data.map(item => item["SALE PRICE"]).slice(0, 2000);
+    //data.map(item => item.BOROUGH);
 
     const ctx = document.getElementById('chart1').getContext('2d');
     const myChart = new Chart(ctx, {
