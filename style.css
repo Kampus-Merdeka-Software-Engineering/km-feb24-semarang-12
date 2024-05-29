@@ -39,14 +39,14 @@ header .logo{
 }
 
 header .navigation a{
-color: #000;
-text-decoration: none;
-font-weight: 500;
-letter-spacing: 1px;
-padding: 2px 15px;
-border-radius: 20px;
-transition: 0.3s;
-transition-property: background;
+	color: #000;
+	text-decoration: none;
+	font-weight: 500;
+	letter-spacing: 1px;
+	padding: 2px 15px;
+	border-radius: 20px;
+	transition: 0.3s;
+	transition-property:all;
 }
 
 header .navigation a:not(:last-child){
@@ -56,7 +56,6 @@ header .navigation a:not(:last-child){
 header .navigation a:hover{
 	background: #fff;
 }
-
 
 .content{
 	max-width: 650px;
@@ -107,7 +106,7 @@ header .navigation a:hover{
 
 .media-icons a{
 	position: relative;
-	color: #111;
+	color: whitesmoke;
 	font-size: 25px;
 }
 
@@ -217,24 +216,53 @@ label{
 	margin: 0 auto;
 
   }
-  .aside-analytics aside{
+  .card-about{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+	.container {
+		display: flex;
+		flex-wrap: wrap;
+		width: 800px;
+		gap: 10px;
+		.card {
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+			width: calc(33.333% - 10px);
+			padding: 20px;
+			text-align: center;
+			cursor: pointer;
+			transition: transform 0.2s;
+
+			.card:hover {
+				transform: translateY(-5px);
+			}
+		}
+	}
+  }
+
+  .aside-home aside{
 	background-color: #f9f9f9; /* Light grey background */
 	border: 2px solid #ccc; /* Light grey border */
 	padding: 10px; /* Space inside the aside */
-	margin: 0 0; /* Space outside the aside */
-	width: 300px; /* Fixed width */
-	float: right; /* Float to the right side of the container */
+	width: 400px; /* Fixed width */
+	margin: 0 0 30px 10px;
+	float: left; /* Float to the right side of the container */
 	box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5); /* Slight shadow for depth */
 	font-family: Arial, sans-serif; /* Font style */
 	border-radius: 10px;
   }
-  .aside-analytics aside h2 {
+  .aside-home aside h2 {
 	font-size: 1.5em; /* Larger heading */
 	margin-top: 0; /* No margin at the top */
 	color: #333; /* Dark grey color */
   }
   
-  .aside-analytics aside p {
+  .aside-home aside p {
 	font-size: 1em; /* Standard paragraph font size */
 	line-height: 1.6; /* Line height for readability */
 	color: #666; /* Medium grey color */
@@ -242,13 +270,12 @@ label{
 
   /* Footer Styling */
   footer {
-	background-color: #333;
+	background-color:  #0d5980;/*#001a33;*/
 	color: white;
 	padding: 8.5px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	/* margin-top: 20px; */
 	clear: both;
 	flex-direction: column;
   }
