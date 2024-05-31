@@ -28,6 +28,8 @@ header{
 	align-items: center;
 }
 
+
+/* Styling Index HTML */
 header .logo{
 	position: relative;
 	color: #000;
@@ -118,13 +120,28 @@ header .navigation a:hover{
 	transform: scale(1.5) ;
 }
 
-label{
+/* label{
 	display: none;
-}
+} */
 
 #check{
 	z-index: 3;
 }
+
+
+/* Styling Analytics */
+.filter-year {
+	display:flex; 
+	flex-direction: column; 
+	gap: 8px; 
+	width: 200px;
+	justify-content: start;
+	align-items: start;
+}
+
+
+
+
 
 /* responsive media */
 
@@ -183,27 +200,6 @@ label{
 
 } */
   
-
-  .main-index {
-		margin: 20px;
-		padding: 20px;
-		background-color: #ffffff; /* Warna latar belakang */
-	}
-
-	.main-p{
-		color: white;
-		border: 1px solid black;
-		background-color: #333;
-		text-decoration: none;
-		border-radius: 5px;
-		padding: 2px;
-	}
-
-  .main-p:hover {
-	font-weight: bold;
-	border: 2px solid aqua;
-	
-}
   .main-analytics {
 	text-align: center;
 	flex: 1;
