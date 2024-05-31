@@ -214,9 +214,71 @@ label{
 	height: 450px;
 	padding: 30px;
 	margin: 0 auto;
+	}
+	
+	/* CARD STYLING */
 
-  }
-  .card-about{
+	.container {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		grid-gap: 20px;
+		width: 90%;
+		max-width: 1200px;
+	}
+	
+	.card-about {
+		background-color: #0C4F60;
+		border: 1px solid ;
+		border-radius: 5px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+		width: 100%;/* calc(100% - 20px); */
+		padding: 20px;
+		text-align: center;
+		cursor: pointer;
+		transition: transform 0.2s;
+	}
+	
+	.card img {
+		width: 100;
+		height: 100;
+		border-radius: 50%;
+		object-fit: cover;
+	}
+	
+	.card h2 {
+		font-size: 1.5em;
+		margin: 15px 0 10px;
+	}
+	
+	.card p {
+		font-size: 1em;
+		color: #666;
+	}
+	
+	.card:hover {
+		transform: translateY(-5px);
+	}
+
+	.card:nth-child(1) {
+		grid-column: span 2;
+	}
+	
+	.card:nth-child(2) {
+		grid-column: span 1;
+	}
+	
+	.card:nth-child(3) {
+		grid-column: span 4;
+	}
+	
+	.card:nth-child(4) {
+		grid-column: span 4;
+	}
+	
+	.card:nth-child(5) {
+		grid-column: span 4;
+	}
+  /* .card-about{
 	display: flex;
     justify-content: center;
     align-items: center;
@@ -243,27 +305,27 @@ label{
 			}
 		}
 	}
-  }
+  } */
 
   .aside-home aside{
-	background-color: #f9f9f9; /* Light grey background */
-	border: 2px solid #ccc; /* Light grey border */
+	background-color: #a9b6b6; /* Light grey background */
+	border: 2px solid #116f86; /* Light grey border */
 	padding: 10px; /* Space inside the aside */
-	width: 400px; /* Fixed width */
-	margin: 0 0 30px 10px;
+	width: 300px; /* Fixed width */
+	margin: 0 0 20px 2px;
 	float: left; /* Float to the right side of the container */
 	box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5); /* Slight shadow for depth */
 	font-family: Arial, sans-serif; /* Font style */
 	border-radius: 10px;
   }
   .aside-home aside h2 {
-	font-size: 1.5em; /* Larger heading */
+	font-size: 16px; /* Larger heading */
 	margin-top: 0; /* No margin at the top */
 	color: #333; /* Dark grey color */
   }
   
   .aside-home aside p {
-	font-size: 1em; /* Standard paragraph font size */
+	font-size: 14px; /* Standard paragraph font size */
 	line-height: 1.6; /* Line height for readability */
 	color: #666; /* Medium grey color */
   }
