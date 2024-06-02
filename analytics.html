@@ -25,13 +25,27 @@
 	<div class="main-analytics">
 		<h2>Analytics</h2>
 		<div class="chart" id="chart">
+			<div class="filters">
 			<div class="filter-year">
 				<label>Filter by Year</label>
 				<select name="year" id="year" style="width: 100%;">
 					<option value="">Select Year</option>
 				</select> 
 			</div>
-			<canvas id="salePriceChart"></canvas>
+
+			<div class="filter-borough">
+				<label for="">Filter by Borough</label>
+				<div id="boroughs">
+				<!-- Checkboxes will be dynamically populated here -->
+				</select>
+				</div>	
+			</div>
+		</div>
+
+
+			<div class="salePriceChart">
+				<canvas id="salePriceChart"></canvas>
+			</div>
 		</div>
 		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 		<script src="index.js"></script>

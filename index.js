@@ -1,5 +1,5 @@
 // Fetch the JSON data
-function fetchJsonData(year, isFilteredYear = false) {
+function fetchJsonData(year, boroughs, isFiltered = false) {
     return fetch('data.json')
         .then(response => response.json())
         .then(data => {
@@ -8,12 +8,17 @@ function fetchJsonData(year, isFilteredYear = false) {
                 data = data.filter((row) => row["SALE YEAR"] === Number(year));
             }
 
+            // Filtering the boroughs data
+            if (boroughs && boroughs.length > 0) {
+                data = data.filter((row) => boroughs.includes(row["BOROUGH"]));
+            }
+
             // Aggregate and sort the sale prices by borough
             const saleData = aggregateSalePricesByBorough(data)
                 .sort((a, b) => b["SALE PRICE"] - a["SALE PRICE"]);
 
             // Extract borough names and sale prices
-            const boroughs = saleData.map(item => item.BOROUGH);
+            const boroughNames = saleData.map(item => item["BOROUGH"]);
             const salePrices = saleData.map(item => item["SALE PRICE"]);
 
             // Get unique years from data and sort them
@@ -23,7 +28,7 @@ function fetchJsonData(year, isFilteredYear = false) {
             const yearElement = document.getElementById("year");
 
             // Populate the year dropdown if it is not filtered by year
-            if (!year && yearElement.options.length > 0 && yearElement.options.length <= yearOptions.length) {
+            if (!year && yearElement.options.length <= 1) {
                 for (let i = 0; i < yearOptions.length; i++) {
                     const option = document.createElement("option");
                     option.value = yearOptions[i];
@@ -35,23 +40,45 @@ function fetchJsonData(year, isFilteredYear = false) {
                 yearElement.addEventListener("change", filterByYear);
             }
 
+
+            // Get unique boroughs from data
+            const boroughOptions = Array.from(new Set(data.map((row) => row.BOROUGH)));
+
+            // Reference to the borough dropdown element
+            const boroughContainer = document.getElementById("boroughs");
+
+            // Populate the borough dropdown if it is not filtered by borough
+            if (boroughContainer.children.length === 0 ){
+                for (let i = 0; i < boroughOptions.length; i++) {
+                    const label = document.createElement("label");
+                    const checkbox = document.createElement("input");
+                    checkbox.type = "checkbox";
+                    checkbox.value = boroughOptions[i];
+                    checkbox.name = "borough";
+                    checkbox.addEventListener("change", filterByBorough);
+                    label.appendChild(checkbox);
+                    label.appendChild(document.createTextNode(boroughOptions[i]));
+                    boroughContainer.appendChild(label);
+                }
+            }
+
             console.log({ data, saleData });
 
             // Create the chart
             const chartElement = document.getElementById("chart");
 
-            if (isFilteredYear) {
+            if (isFiltered) {
                 // Remove the old canvas and create a new one for the updated chart
                 chartElement.removeChild(chartElement.lastElementChild);
                 const newCtx = document.createElement("canvas");
                 newCtx.id = "salePriceChart";
-                newCtx["data-sort-year"] = true;
+                newCtx["data-sort-filtered"] = true;
                 chartElement.appendChild(newCtx);
                 const ctx = document.getElementById('salePriceChart').getContext('2d');
-                renderBarChart(ctx, boroughs, salePrices);
+                renderBarChart(ctx, boroughNames, salePrices);
             } else {
                 const ctx = document.getElementById('salePriceChart').getContext('2d');
-                renderBarChart(ctx, boroughs, salePrices);
+                renderBarChart(ctx, boroughNames, salePrices);
             }
         })
         .catch(error => console.error('Error fetching data:', error));
@@ -63,7 +90,15 @@ fetchJsonData();
 // Event handler to filter data by selected year
 function filterByYear() {
     const year = document.getElementById("year").value;
-    fetchJsonData(year, true);
+    const boroughs = Array.from(document.querySelectorAll('input[name="borough"]:checked')).map(checkbox => checkbox.value);
+    fetchJsonData(year,boroughs, true);
+}
+
+// Event handler to filter data by selected borough
+function filterByBorough() {
+    const year = document.getElementById("year").value;
+    const boroughs = Array.from(document.querySelectorAll('input[name="borough"]:checked')).map(checkbox => checkbox.value);
+    fetchJsonData(year,boroughs, true);
 }
 
 // Function to render the bar chart
