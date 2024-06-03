@@ -9,6 +9,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 	<title>Home</title>
 </head>
 <body>
@@ -26,6 +27,7 @@
 		<h2>Analytics</h2>
 		<div class="chart" id="chart">
 			<div class="filters">
+				<div class="sorts">
 			<div class="filter-year">
 				<label>Filter by Year</label>
 				<select name="year" id="year" style="width: 100%;">
@@ -37,17 +39,33 @@
 				<label for="">Filter by Borough</label>
 				<div id="boroughs">
 				<!-- Checkboxes will be dynamically populated here -->
-				</select>
 				</div>	
 			</div>
+			</div>
+
+			<div class="stats">
+				<div class="stat">
+					<h3>Total Units</h3>
+					<p id="total-units">0</p>
+				</div>
+				<div class="stat">
+					<h3>Residential Units</h3>
+					<p id="residential-units">0</p>
+				</div>
+				<div class="stat">
+					<h3>Commercial Units</h3>
+					<p id="commercial-units">0</p>
+				</div>
+			</div>
+			<div class="propertyUnitChart">
+				<canvas id="propertyUnitChart"></canvas>
+			</div>
 		</div>
-
-
 			<div class="salePriceChart">
 				<canvas id="salePriceChart"></canvas>
 			</div>
+
 		</div>
-		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 		<script src="index.js"></script>
 	</div>
 </section>

@@ -137,28 +137,28 @@ header .navigation a:hover{
 	margin-bottom: 20px;
 }
 
+.sorts{
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+}
 .filter-year, .filter-borough {
-	/* display:flex; 
-	flex-direction: column; 
-	gap: 8px; 
-	width: 200px;
-	justify-content: start;
-	align-items: start;
-	select{
-		padding: 10px 20px;
-	} */
 	flex: 1;
 	padding: 10px;
 	background: white;
 	border-radius: 8px;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	font-size: 12px;
 }
 
 .filter-year label .filter-borough label{
 	font-weight: bold;
 	margin-bottom: 10px;
 	display: block;
-	
+}
+
+.propertyUnitChart {
+	flex: 1;
 }
 
 #boroughs {
@@ -189,6 +189,31 @@ header .navigation a:hover{
 .salePriceChart {
     position: relative;
     margin-top: 20px;
+}
+
+.stats {
+	display: flex;
+	gap: 5px;
+	flex-direction: column;
+}
+
+.stat {
+	background: white;
+	padding: 10px;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	flex: 1;
+	text-align: center;
+}
+
+.stat h3{
+	margin-bottom: 10px;
+	font-size: 12px;
+}
+
+.stat p{
+	font-size: 18px;
+	font-weight: bold;
 }
 /* responsive media */
 

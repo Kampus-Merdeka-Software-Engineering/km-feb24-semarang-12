@@ -1,5 +1,5 @@
 // Fetch the JSON data
-function fetchJsonData(year, boroughs, isFiltered = false) {
+function fetchJsonData(year = null, boroughs = [], isFiltered = false) {
     return fetch('data.json')
         .then(response => response.json())
         .then(data => {
@@ -40,15 +40,14 @@ function fetchJsonData(year, boroughs, isFiltered = false) {
                 yearElement.addEventListener("change", filterByYear);
             }
 
-
             // Get unique boroughs from data
             const boroughOptions = Array.from(new Set(data.map((row) => row.BOROUGH)));
 
-            // Reference to the borough dropdown element
+            // Reference to the borough container element
             const boroughContainer = document.getElementById("boroughs");
 
-            // Populate the borough dropdown if it is not filtered by borough
-            if (boroughContainer.children.length === 0 ){
+            // Populate the borough checkboxes if it is not filtered by borough
+            if (boroughContainer.children.length === 0) {
                 for (let i = 0; i < boroughOptions.length; i++) {
                     const label = document.createElement("label");
                     const checkbox = document.createElement("input");
@@ -62,43 +61,56 @@ function fetchJsonData(year, boroughs, isFiltered = false) {
                 }
             }
 
-            console.log({ data, saleData });
+            // Update statistics
+            updateStats(data);
 
             // Create the chart
             const chartElement = document.getElementById("chart");
 
             if (isFiltered) {
                 // Remove the old canvas and create a new one for the updated chart
-                chartElement.removeChild(chartElement.lastElementChild);
-                const newCtx = document.createElement("canvas");
-                newCtx.id = "salePriceChart";
-                newCtx["data-sort-filtered"] = true;
-                chartElement.appendChild(newCtx);
-                const ctx = document.getElementById('salePriceChart').getContext('2d');
-                renderBarChart(ctx, boroughNames, salePrices);
+                const salePriceChart = document.getElementById('salePriceChart');
+                salePriceChart.remove();
+                const newSalePriceCtx = document.createElement("canvas");
+                newSalePriceCtx.id = 'salePriceChart';
+                chartElement.querySelector('.salePriceChart').appendChild(newSalePriceCtx);
+                const SalePriceCtx = document.getElementById('salePriceChart').getContext('2d');
+                renderBarChart(SalePriceCtx, boroughNames, salePrices);
+
+                // Remove the old canvas and create a new one for the updated pie chart
+                const propertyUnitChart = document.getElementById('propertyUnitChart');
+                propertyUnitChart.remove();
+                const newPropertyUnitCtx = document.createElement("canvas");
+                newPropertyUnitCtx.id = "propertyUnitChart";
+                chartElement.querySelector('.propertyUnitChart').appendChild(newPropertyUnitCtx);
+                const propertyUnitCtx = document.getElementById('propertyUnitChart').getContext('2d');
+                renderPieChart(propertyUnitCtx, boroughNames, saleData);
+
             } else {
-                const ctx = document.getElementById('salePriceChart').getContext('2d');
-                renderBarChart(ctx, boroughNames, salePrices);
+                const salePriceCtx = document.getElementById('salePriceChart').getContext('2d');
+                renderBarChart(salePriceCtx, boroughNames, salePrices);
+
+                const propertyUnitCtx = document.getElementById('propertyUnitChart').getContext('2d');
+                renderPieChart(propertyUnitCtx, boroughNames, saleData);
             }
         })
+        
         .catch(error => console.error('Error fetching data:', error));
 }
 
-// Initial call to fetch JSON data
-fetchJsonData();
 
 // Event handler to filter data by selected year
 function filterByYear() {
     const year = document.getElementById("year").value;
-    const boroughs = Array.from(document.querySelectorAll('input[name="borough"]:checked')).map(checkbox => checkbox.value);
-    fetchJsonData(year,boroughs, true);
+    const boroughs = Array.from(document.querySelectorAll('#boroughs input:checked')).map(checkbox => checkbox.value);
+    fetchJsonData(year, boroughs, true);
 }
 
 // Event handler to filter data by selected borough
 function filterByBorough() {
     const year = document.getElementById("year").value;
-    const boroughs = Array.from(document.querySelectorAll('input[name="borough"]:checked')).map(checkbox => checkbox.value);
-    fetchJsonData(year,boroughs, true);
+    const boroughs = Array.from(document.querySelectorAll('#boroughs input:checked')).map(checkbox => checkbox.value);
+    fetchJsonData(year, boroughs, true);
 }
 
 // Function to render the bar chart
@@ -120,7 +132,7 @@ function renderBarChart(ctx, labels, data) {
                 y: {
                     beginAtZero: true,
                     ticks: {
-                        callback: function(value) { return value / 1e9 + 'B'; } // Format y-axis labels as 'B'
+                        callback: function (value) { return value / 1e9 + 'B'; } // Format y-axis labels as 'B'
                     }
                 }
             },
@@ -128,11 +140,84 @@ function renderBarChart(ctx, labels, data) {
                 legend: {
                     display: true,
                     position: 'top'
+                },
+                datalabels: {
+                    display: false // Hide data labels
                 }
             }
         }
     });
 }
+
+
+// Function to render the pie chart (doughnut chart)
+function renderPieChart(ctx, labels, data) {
+    const totalSales = data.reduce((acc, item) => acc + item["SALE PRICE"], 0);
+    const percentages = data.map(item => ((item["SALE PRICE"] / totalSales) * 100).toFixed(2));
+    const salesNumbers = data.map(item => item["SALE PRICE"]);
+
+    return new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: labels,
+            datasets: [{
+                data: percentages,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(255, 206, 86, 0.6)',
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(153, 102, 255, 0.6)',
+                    'rgba(255, 159, 64, 0.6)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            plugins: {
+                datalabels: {
+                    formatter: (value, context) => {
+                        return value + '%';
+                    },
+                    color: '#000',
+                    labels: {
+                        title: {
+                            font: {
+                                size: 9,
+                                weight: 'bold'
+                            }
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function (tooltipItem) {
+                            const dataIndex = tooltipItem.dataIndex;
+                            const percentage = tooltipItem.raw;
+                            const salesNumber = salesNumbers[dataIndex].toLocaleString();
+                            return `${tooltipItem.label}: ${percentage}% (Total Sales: ${salesNumber})`;
+                        }
+                    }
+                },
+                legend: {
+                    display: true,
+                    position: 'top'
+                }
+            }
+        },
+        plugins: [ChartDataLabels]
+    });
+}
+
+
 
 // Function to aggregate sale prices by borough
 function aggregateSalePricesByBorough(data) {
@@ -153,3 +238,21 @@ function aggregateSalePricesByBorough(data) {
         "SALE PRICE": salePrice
     }));
 }
+
+// Function to update stats
+function updateStats(data) {
+    const totalUnits = data.length;
+    const residentialUnits = data.reduce((acc, item) => acc + item["RESIDENTIAL UNITS"],0);
+    const commercialUnits = data.reduce((acc, item) => acc + item["COMMERCIAL UNITS"],0);
+
+    document.getElementById("total-units").textContent = totalUnits.toLocaleString();
+    document.getElementById("residential-units").textContent = residentialUnits.toLocaleString();
+    document.getElementById("commercial-units").textContent = commercialUnits.toLocaleString();
+}
+
+// Add the ChartDataLabels plugin to the Chart.js library
+Chart.register(ChartDataLabels);
+
+// Fetch and render the charts immediately on page load
+fetchJsonData();
+
