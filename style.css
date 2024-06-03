@@ -98,6 +98,67 @@ header .navigation a:hover{
 	background: #0C4F60;
 }
 
+/* IMAGE
+=========================== */
+.img-wrapper{
+    position: absolute;
+    top: 70px;
+    left: 860px;
+
+}
+
+.img-wrapper .img{
+    background: url('img/hero.jpg') no-repeat;
+	margin-top: 10px;
+    background-size: cover;
+    height: 650px;
+    width: 570px;
+    z-index: 1;
+    opacity: 0;
+    animation: image-appear 0.0001s linear forwards;
+    animation-delay: 2.4s;
+}
+
+@keyframes image-appear{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+/* BLOCKS
+=========================== */
+.block{
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: #226A80;
+    animation: block-appear 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    animation-delay: 1.5s;
+}
+
+.img-wrapper .block{
+    animation-delay: 1.8s;
+}
+
+@keyframes block-appear{
+    0%{
+       left: 0;
+       width: 0%;
+    }
+    50%{
+        left: 0;
+        width: 100%;
+    }
+    100%{
+        left: 100%;
+        width: 0%;
+    }
+}
 
 .media-icons{
 	display: flex;
@@ -130,13 +191,14 @@ header .navigation a:hover{
 
 
 /* Styling Analytics */
-.filter-year {
+.filter-year #year{
 	display:flex; 
 	flex-direction: column; 
 	gap: 8px; 
-	width: 200px;
+	width: 150px;
 	justify-content: start;
 	align-items: start;
+	border-radius: 10px;
 }
 
 
@@ -270,10 +332,10 @@ header .navigation a:hover{
 	  .card-image .card-img{
 		height: 100%;
 		width: 100%;
-		object-fit: cover;
+		object-fit:cover;
 		border-radius: 50%;
 		border: 4px solid #4070F4;
-	  }
+		}
 	  .name{
 		font-size: 18px;
 		font-weight: 500;
