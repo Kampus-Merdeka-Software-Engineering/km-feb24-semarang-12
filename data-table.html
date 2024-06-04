@@ -12,6 +12,62 @@
 	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 	<title>Data Table</title>
 </head>
+<style>
+
+	table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+#entries-dropdown {
+  margin-bottom: 10px;
+  
+}
+
+#entries-select {
+  padding: 5px;
+  color: #fff;
+  border: 1px solid	#ddd;
+  background-color: #007bff;
+  border-radius: 10px;
+}
+
+#pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#pagination button {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+#pagination button.disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+#page-info {
+  margin: 0 10px;
+}
+
+.page-button.active {
+  /* Styles for the highlighted button */
+  background-color: #007bff; /* Example blue color */
+  color: #fff; /* Example white text color */
+  border-color: #007bff; /* Example blue border color */
+}	
+
+</style>
 <body>
     <section>
     <header>
@@ -24,6 +80,31 @@
                 <a href="about.html">About Us</a>
             </div>
     </header>
+	<div id="entries-dropdown">
+		Show entries:
+		<select id="entries-select">
+		  <option value="10">10</option>
+		  <option value="20" selected>20</option>
+		  <option value="50">50</option>
+		</select>
+	  </div>
+	  <table>
+		<thead>
+		  <tr>
+			<th>BOROUGH</th>
+			<th>NEIGHBORHOOD</th>
+			<th>BUILDING CLASS CATEGORY</th>
+			<th>ADDRESS</th>
+			</tr>
+		</thead>
+		<tbody id="data-body"></tbody>
+	  </table>
+	
+	  <div id="pagination">
+		<button id="prev-button" disabled>Prev</button>
+		<span id="page-info"></span>
+		<button id="next-button">Next</button>
+	  </div>
 </section>
 <footer>
 	<p>Copyright © 2024 Team 12 Section Semarang</p>
