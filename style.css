@@ -98,6 +98,8 @@ header .navigation a:hover{
 	background: #0C4F60;
 }
 
+
+
 /* IMAGE
 =========================== */
 .img-wrapper{
@@ -111,6 +113,7 @@ header .navigation a:hover{
     background: url('img/hero.jpg') no-repeat;
 	margin-top: 10px;
     background-size: cover;
+	overflow: hidden;
     height: 650px;
     width: 570px;
     z-index: 1;
@@ -181,23 +184,91 @@ header .navigation a:hover{
 	transform: scale(1.2) ;
 }
 
-/* label{
-	display: none;
-} */
-
 #check{
 	z-index: 3;
 }
 
-
 /* Styling Analytics */
-.filter-year {
-	display:flex; 
-	flex-direction: column; 
-	gap: 8px; 
-	width: 200px;
-	justify-content: start;
-	align-items: start;
+.filters {
+	display: flex;
+	align-items: flex-start;
+	gap: 20px;
+	margin-bottom: 20px;
+}
+
+.sorts{
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+}
+.filter-year, .filter-borough {
+	flex: 1;
+	padding: 10px;
+	background: white;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	font-size: 12px;
+}
+
+.filter-year label .filter-borough label{
+	font-weight: bold;
+	margin-bottom: 10px;
+	display: block;
+}
+
+.propertyUnitChart {
+	flex: 1;
+}
+
+#boroughs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+#boroughs label {
+	display: flex;
+	align-items: center;
+	background: #e9e9e9;
+	padding: 5px 10px;
+	border-radius: 8px;
+}
+#boroughs input[type="checkbox"]{
+	margin-right: 8px;
+}
+.chart {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.salePriceChart {
+    position: relative;
+    margin-top: 20px;
+}
+
+.stats {
+	display: flex;
+	gap: 5px;
+	flex-direction: column;
+}
+
+.stat {
+	background: white;
+	padding: 10px;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	flex: 1;
+	text-align: center;
+}
+
+.stat h3{
+	margin-bottom: 10px;
+	font-size: 12px;
+}
+
+.stat p{
+	font-size: 18px;
+	font-weight: bold;
 }
 /* responsive media */
 
