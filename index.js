@@ -256,3 +256,4 @@ Chart.register(ChartDataLabels);
 // Fetch and render the charts immediately on page load
 fetchJsonData();
 
+
