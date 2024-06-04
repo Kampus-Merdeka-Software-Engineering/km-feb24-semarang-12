@@ -191,17 +191,14 @@ header .navigation a:hover{
 
 
 /* Styling Analytics */
-.filter-year #year{
+.filter-year {
 	display:flex; 
 	flex-direction: column; 
 	gap: 8px; 
-	width: 150px;
+	width: 200px;
 	justify-content: start;
 	align-items: start;
-	border-radius: 10px;
 }
-
-
 /* responsive media */
 
 /* @media (max-width: 960px){
@@ -262,6 +259,7 @@ header .navigation a:hover{
   .main-analytics {
 	text-align: center;
 	flex: 1;
+	padding: 20px;
   }
 
   .chart {
@@ -433,9 +431,9 @@ header .navigation a:hover{
 
   /* Footer Styling */
   footer {
-	background-color:  #0d5980;/*#001a33;*/
+	background-color:  #333;;/*#001a33;*/
 	color: white;
-	padding: 8.5px;
+	padding: 10px 20px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -458,6 +456,9 @@ header .navigation a:hover{
 	text-decoration: none;
   }
   
-  footer nav ul li a:hover {
+  footer .media-icons a:hover {
 	text-decoration: underline;
+	color: #ccc;
   }
+
+  
