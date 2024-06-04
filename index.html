@@ -4,6 +4,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="style.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"
+    	integrity="sha256-lPE3wjN2a7ABWHbGz7+MKBJaykyzqCbU96BJWjio86U=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,24 +13,16 @@
 	<title>Home</title>
 </head>
 <body>
-<section>
+<section class="background">
 
 	<header>
-		<h2>
-			<a href="#" class="logo">Team 12</a></h2>
+		<h2><a href="#" class="logo">Team 12</a></h2>
 			<div class="navigation">
 				<a href="index.html">Home</a>
 				<a href="data-table.html">Data</a>
 				<a href="analytics.html">Analytics</a>
 				<a href="about.html">About Us</a>
 			</div>
-
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-
 	</header>
 
 	<div class="content">
@@ -39,6 +33,11 @@
 				 <a href="about.html" class="abt-btn">Team 12</a>
 		</div>
 	</div>
+
+	<div class="img-wrapper">
+        <div class="img"></div>
+        <div class="block"></div>
+    </div>
 
 	<div class="aside-home">
 		<aside>
@@ -51,7 +50,26 @@
 
 	
 </section>
-
+	
+	<script>
+		TweenMax.to(".logo", 1.5,{
+		   delay:2.5,
+           width:"100%",
+           ease:Expo.easeInOut
+       })
+		TweenMax.to(".background", 3,{
+		   delay:2.5,
+           width:"100%",
+           ease:Expo.easeInOut
+       })
+	   //NavBar
+		TweenMax.from(".navigation", 1.5,  {
+		  delay:1.5,
+		  opacity:0,
+		  y:30,
+		  ease:Expo.easeInOut
+	  })
+   </script>
 	<footer>
 		<p>Copyright © 2024 Team 12 Section Semarang</p>
 		<nav>
