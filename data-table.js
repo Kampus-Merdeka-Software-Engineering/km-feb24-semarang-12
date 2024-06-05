@@ -3,10 +3,14 @@ const paginationContainer = document.getElementById('pagination');
 const entriesSelect = document.getElementById('entries-select');
 const prevButton = document.getElementById('prev-button');
 const nextButton = document.getElementById('next-button');
+const searchInput = document.getElementById('search-input');
+const sortSelect = document.getElementById('sort-select');
+const sortOrderSelect = document.getElementById('sort-order');
 
 let currentPage = 1;
 let rowsPerPage = 20; // initial value
 let totalPages = 0;
+let currentData = [];
 
 function populateTable(data, page) {
   tbody.innerHTML = ''; // clear table body
@@ -32,7 +36,17 @@ function populateTable(data, page) {
     addressCell.textContent = data[i].ADDRESS;
     row.appendChild(addressCell);
 
-    // Add more table cells as needed
+    const ownedCell = document.createElement('td');
+    ownedCell.textContent = data[i]["OWNED BY"];
+    row.appendChild(ownedCell);
+
+    const priceCell = document.createElement('td');
+    priceCell.textContent = data[i]["SALE PRICE"];
+    row.appendChild(priceCell);
+
+    const dateCell = document.createElement('td');
+    dateCell.textContent = data[i]["SALE DATE"];
+    row.appendChild(dateCell);
 
     tbody.appendChild(row);
   }
@@ -53,6 +67,29 @@ function updatePaginationButtons() {
 
 function updatePageInfo() {
   document.getElementById('page-info').textContent = `Page ${currentPage} of ${totalPages}`;
+}
+
+function searchTable(data, searchTerm) {
+  return data.filter(item => 
+      Object.values(item).some(value =>
+          value.toString().toLowerCase().includes(searchTerm.toLowerCase())
+      )
+  );
+}
+
+function sortTable(data, sortBy, order) {
+  const sortedData = [...data];
+  sortedData.sort((a, b) => {
+      const aValue = a[sortBy];
+      const bValue = b[sortBy];
+
+      if (order === 'asc') {
+          return aValue > bValue ? 1 : -1;
+      } else {
+          return aValue < bValue ? 1 : -1;
+      }
+  });
+  return sortedData;
 }
 
 function changeEntriesPerPage(newData, newRowsPerPage) {
@@ -118,7 +155,6 @@ function generatePageButtons(data) {
   paginationContainer.appendChild(nextButton);
 }
 
-
 function updatePageInfo() {
     const pageInfoElement = document.getElementById('page-info');
     if (pageInfoElement) {
@@ -140,7 +176,35 @@ fetch('data.json')
       populateTable(data, currentPage);
       updatePageInfo();
     });
-  
-  })
+
+    // Search functionality
+    searchInput.addEventListener('input', () => {
+      const searchTerm = searchInput.value;
+      const filteredData = searchTable(currentData, searchTerm);
+      createPagination(filteredData);
+      populateTable(filteredData, currentPage);
+  });
+
+  // Sort functionality
+  sortSelect.addEventListener('change', () => {
+      const sortBy = sortSelect.value;
+      const sortOrder = sortOrderSelect.value;
+      if (sortBy) {
+          const sortedData = sortTable(currentData, sortBy, sortOrder);
+          createPagination(sortedData);
+          populateTable(sortedData, currentPage);
+      }
+  });
+
+  sortOrderSelect.addEventListener('change', () => {
+      const sortBy = sortSelect.value;
+      const sortOrder = sortOrderSelect.value;
+      if (sortBy) {
+          const sortedData = sortTable(currentData, sortBy, sortOrder);
+          createPagination(sortedData);
+          populateTable(sortedData, currentPage);
+      }
+  });
+})
   .catch(error => console.error(error));
   

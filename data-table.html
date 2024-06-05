@@ -21,7 +21,7 @@
 
 th, td {
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 2px solid #ddd;
 }
 
 #entries-dropdown {
@@ -88,16 +88,20 @@ th, td {
 		  <option value="50">50</option>
 		</select>
 	  </div>
-	  <table>
+	  <table id="product-table" border="1" style="width: 100%;">
 		<thead>
 		  <tr>
 			<th>BOROUGH</th>
 			<th>NEIGHBORHOOD</th>
 			<th>BUILDING CLASS CATEGORY</th>
 			<th>ADDRESS</th>
+			<th>OWNED BY</th>	
+			<th>SALE PRICE</th>	
+			<th>SALE DATE</th>
 			</tr>
 		</thead>
 		<tbody id="data-body"></tbody>
+
 	  </table>
 	
 	  <div id="pagination">
