@@ -2,122 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
-	<title>Data Table</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataTables Example</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
 </head>
-<style>
-
-	table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th, td {
-  padding: 10px;
-  border: 1px solid #ddd;
-}
-
-#entries-dropdown {
-  margin-bottom: 10px;
-  
-}
-
-#entries-select {
-  padding: 5px;
-  color: #fff;
-  border: 1px solid	#ddd;
-  background-color: #007bff;
-  border-radius: 10px;
-}
-
-#pagination {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-#pagination button {
-  padding: 5px 10px;
-  border: 1px solid #ddd;
-  margin: 5px;
-  cursor: pointer;
-  border-radius: 10px;
-}
-
-#pagination button.disabled {
-  opacity: 0.5;
-  cursor: default;
-}
-
-#page-info {
-  margin: 0 10px;
-}
-
-.page-button.active {
-  /* Styles for the highlighted button */
-  background-color: #007bff; /* Example blue color */
-  color: #fff; /* Example white text color */
-  border-color: #007bff; /* Example blue border color */
-}	
-
-</style>
 <body>
-    <section>
-    <header>
-        <h2>
-            <a href="#" class="logo">Team 12</a></h2>
-            <div class="navigation">
-                <a href="index.html">Home</a>
-                <a href="data-table.html">Data</a>
-                <a href="analytics.html">Analytics</a>
-                <a href="about.html">About Us</a>
-            </div>
-    </header>
-	<div id="entries-dropdown">
-		Show entries:
-		<select id="entries-select">
-		  <option value="10">10</option>
-		  <option value="20" selected>20</option>
-		  <option value="50">50</option>
-		</select>
-	  </div>
-	  <table>
-		<thead>
-		  <tr>
-			<th>BOROUGH</th>
-			<th>NEIGHBORHOOD</th>
-			<th>BUILDING CLASS CATEGORY</th>
-			<th>ADDRESS</th>
-			</tr>
-		</thead>
-		<tbody id="data-body"></tbody>
-	  </table>
-	
-	  <div id="pagination">
-		<button id="prev-button" disabled>Prev</button>
-		<span id="page-info"></span>
-		<button id="next-button">Next</button>
-	  </div>
-</section>
-<footer>
-	<p>Copyright © 2024 Team 12 Section Semarang</p>
-	<nav>
-		<ul>
-			<div class="media-icons">
-				<a href="#"><i class="fab fa-instagram"></i></a>
-				<a href="#"><i class="fab fa-discord"></i></a>
-				<a href="#"><i class="fab fa-linkedin"></i></a>
-			</div>
-		</ul>
-	</nav>
-</footer>
-<script src="data-table.js"></script>
+    <h1>DataTables with Filters Example</h1>
+    <div class="filters">
+        <label for="yearFilter">Filter by Year:</label>
+        <select id="yearFilter">
+            <option value="">All Years</option>
+        </select>
+        <label for="boroughFilter">Filter by Borough:</label>
+        <select id="boroughFilter">
+            <option value="">All Boroughs</option>
+        </select>
+    </div>
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Borough</th>
+                <th>Neighborhood</th>
+                <th>Building Class Category</th>
+                <th>Tax Class</th>
+                <th>Address</th>
+                <th>Zip Code</th>
+                <th>Commercial Units</th>
+                <th>Residential Units</th>
+                <th>Total Units</th>
+                <th>Sale Price</th>
+                <th>Sale Year</th>
+            </tr>
+        </thead>
+    </table>
+    <script src="data-table.js"></script>
 </body>
 </html>
