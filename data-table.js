@@ -22,11 +22,7 @@ $(document).ready(function() {
               { data: 'BOROUGH' },
               { data: 'NEIGHBORHOOD' },
               { data: 'BUILDING CLASS CATEGORY' },
-            //   { data: 'TAX CLASS AT PRESENT' },
               { data: 'ADDRESS' },
-            //   { data: 'ZIP CODE' },
-            //   { data: 'COMMERCIAL UNITS' },
-            //   { data: 'RESIDENTIAL UNITS' },
               { data: 'TOTAL UNITS' },
               { data: 'SALE PRICE' },
               { data: 'SALE YEAR' }
