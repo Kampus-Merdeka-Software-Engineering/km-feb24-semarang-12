@@ -98,6 +98,13 @@ section{
     }
   }
 
+.chart-container {
+  position: relative;
+  margin: auto;
+  height: 50vh; /* Adjust height as needed */
+  width: 50vw;  /* Adjust width as needed */
+}
+
 .filters {
 	display: flex;
 	align-items: flex-start;
