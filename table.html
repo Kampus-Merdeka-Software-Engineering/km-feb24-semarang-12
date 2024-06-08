@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- css for data tables -->
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="css/table.css">
+
+    <!-- css for Symbols & Font-->
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- JavaScript for data table -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+</head>
+    <title>Data Tables</title>
+<body>
+	<section>
+		<header class="header">
+            <h2><a href="#" class="logo">TEAM 12</a></h2>
+            <nav class="navbar">
+                <div id="close" class="fas fa-times"></div>
+    
+                <a href="index.html" class="nav_item">Home</a>
+                <a href="table.html" class="nav_item">Data</a>
+                <a href="dashboard.html" class="nav_item">Dashboard</a>
+                <a href="about.html" class="nav_item">About Us</a>
+            </nav>
+                <div id="menu" class="fas fa-bars"></div>
+        </header>
+    <h2>Data Tables</h2>
+    <div class="filters">
+        <label for="yearFilter">Filter by Year:</label>
+        <select id="yearFilter">
+            <option value="">All Years</option>
+        </select>
+        <label for="boroughFilter">Filter by Borough:</label>
+        <select id="boroughFilter">
+            <option value="">All Boroughs</option>
+        </select>
+    </div>
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Borough</th>
+                <th>Neighborhood</th>
+                <th>Building Class Category</th>
+                <th>Address</th>
+                <th>Total Units</th>
+                <th>Sale Price</th>
+                <th>Sale Year</th>
+            </tr>
+        </thead>
+    </table>
+	</section>
+    <script src="js/data-table.js"></script>
+    <script>
+        let navbar = document.querySelector('.header .navbar')
+
+            document.querySelector('#menu').onclick = () =>{
+            navbar.classList.add('active');
+            }
+
+            document.querySelector('#close').onclick = () =>{
+            navbar.classList.remove('active');
+            }
+
+
+    </script>
+    
+	<footer>
+		<p>Copyright © 2024 Team 12 Section Semarang</p>
+		<nav>
+			<ul>
+				<div class="media-icons">
+					<a href="#"><i class="fab fa-instagram"></i></a>
+					<a href="#"><i class="fab fa-discord"></i></a>
+					<a href="#"><i class="fab fa-linkedin"></i></a>
+				</div>
+			</ul>
+		</nav>
+	</footer>
+</body>
+</html>

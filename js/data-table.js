@@ -33,7 +33,8 @@ $(document).ready(function() {
       // Filter by year
       $('#yearFilter').on('change', function() {
           const selectedYear = $(this).val();
-          table.column(10).search(selectedYear).draw();
+          console.log('Selected Year:', selectedYear);
+          table.column(6).search(selectedYear).draw();
       });
 
       // Filter by borough

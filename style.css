@@ -28,12 +28,8 @@ header {
 	align-items: center;
 }
 
-<<<<<<< HEAD
-header .logo {
-=======
 /* Styling Index HTML */
 header .logo{
->>>>>>> f6eb02be06b7ebf19031891fb73e327d9d3d966f
 	position: relative;
 	color: #000;
 	font-size: 30px;
@@ -60,6 +56,11 @@ header .navigation a:not(:last-child) {
 
 header .navigation a:hover {
 	background: #fff;
+}
+
+#check:checked ~  header .navigation{
+	margin-right: 30px;
+	justify-content: right;
 }
 
 .content {
@@ -100,74 +101,6 @@ header .navigation a:hover {
 	background: #0C4F60;
 }
 
-<<<<<<< HEAD
-/* IMAGE */
-.img-wrapper {
-	position: relative;
-=======
-/* IMAGE
-=========================== */
-.img-wrapper{
-    position: absolute;
-    top: 70px;
-    left: 860px;
-}
-
-.img-wrapper .img{
-    background: url('img/hero.jpg') no-repeat;
->>>>>>> f6eb02be06b7ebf19031891fb73e327d9d3d966f
-	margin-top: 10px;
-	background-size: cover;
-	overflow: auto;
-	height: 650px;
-	width: 570px;
-	max-width: 100%;
-	z-index: 1;
-	opacity: 0;
-	animation: image-appear 0.0001s linear forwards;
-	animation-delay: 2.4s;
-}
-
-@keyframes image-appear {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
-}
-
-/* BLOCKS */
-.block {
-	position: absolute;
-	top: 10px;
-	left: 0;
-	width: 0%;
-	height: 100%;
-	background: #226A80;
-	animation: block-appear 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-	animation-delay: 1.5s;
-}
-
-.img-wrapper .block {
-	animation-delay: 1.8s;
-}
-
-@keyframes block-appear {
-	0% {
-		left: 0;
-		width: 0%;
-	}
-	50% {
-		left: 0;
-		width: 100%;
-	}
-	100% {
-		left: 100%;
-		width: 0%;
-	}
-}
-
 .media-icons {
 	display: flex;
 	justify-content: center;
@@ -191,6 +124,10 @@ header .navigation a:hover {
 
 #check {
 	display: none;
+	z-index: 3;
+}
+
+.menu-icon .menu-btn {
 	z-index: 3;
 }
 
@@ -237,7 +174,7 @@ header .navigation a:hover {
 #boroughs label {
 	display: flex;
 	align-items: center;
-	background: #e9e9e9;
+	background: brown;
 	padding: 5px 10px;
 	border-radius: 8px;
 }
@@ -301,10 +238,6 @@ header .navigation a:hover {
 	background-color: #FFF;
 }
 
-<<<<<<< HEAD
-.image-content,
-.card-content {
-=======
 	label .close-btn{
 		display: none;
 	}
@@ -341,7 +274,7 @@ header .navigation a:hover {
 		position: fixed;
 	}
 
-} */
+} 
   
   .main-analytics {
 	text-align: center;
@@ -426,21 +359,21 @@ header .navigation a:hover {
 		}
 
 	  .name{
-		font-size: 18px;
+		font-size: 20px;
 		font-weight: 500;
-		color: #333;
+		color: #000000;
 	  }
 
 	  .role{
-		font-size: 18px;
-		font-weight: 500;
+		font-size: 16px;
+		font-weight: 400;
 		color: #333;
 	  }
 
 	  .description{
 		font-size: 14px;
 		color: #707070;
-		text-align: center;
+		text-align: justify;
 	  }
 	  .swiper-navBtn{
 		color: #6E93f7;
@@ -475,8 +408,7 @@ header .navigation a:hover {
 		  display: none;
 		}
 	  }
-  /* .card-about{
->>>>>>> f6eb02be06b7ebf19031891fb73e327d9d3d966f
+   .card-about{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
