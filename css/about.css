@@ -10,15 +10,12 @@
 }
 
 html{
-  font-size: 65.5%;
+  font-size: 62.5%;
 }
 
-.section-about{
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    background: #e6e1d7;
-}
+section{
+    padding: 2rem 9%;
+  }
 
 /* header */
 
@@ -84,6 +81,13 @@ html{
 }
 
 /* ends */
+
+.section-about{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: #e6e1d7;
+}
 
 /* card start */
 
