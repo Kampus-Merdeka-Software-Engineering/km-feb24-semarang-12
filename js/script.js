@@ -210,8 +210,6 @@ function renderStackedBarChart(ctx, data, boroughs) {
 }
 
 // Function to render the doughnut chart
-// Function to render the doughnut chart
-// Function to render the doughnut chart
 function renderDoughnutChart(ctx, labels, data) {
     const totalSales = data.reduce((acc, item) => acc + item, 0);
     const percentages = data.map(item => ((item / totalSales) * 100).toFixed(2));
@@ -278,8 +276,6 @@ function renderDoughnutChart(ctx, labels, data) {
 // Fetch and render the charts immediately on page load
 fetchJsonData();
 
-
-
 // Function to aggregate sale prices by borough
 function aggregateSalePricesByBorough(data) {
     const salePricesByBorough = {};
@@ -302,7 +298,7 @@ function aggregateSalePricesByBorough(data) {
 
 // Function to update statistics
 function updateStats(data) {
-    const totalUnits = data.length;
+    const totalUnits = data.reduce((acc, item) => acc + item["TOTAL UNITS"], 0);
     const residentialUnits = data.reduce((acc, item) => acc + item["RESIDENTIAL UNITS"], 0);
     const commercialUnits = data.reduce((acc, item) => acc + item["COMMERCIAL UNITS"], 0);
 

@@ -26,6 +26,7 @@
             </nav>
                 <div id="menu" class="fas fa-bars"></div>
         </header>
+
 	<div class="main-analytics">
 		<h2>DASHBOARD</h2>
 		<div class="chart" id="chart">
@@ -60,20 +61,22 @@
 					<p id="commercial-units">0</p>
 				</div>
 			</div>
-
-			<div class="chart-container propertyUnitChart">
-				<canvas id="propertyUnitChart"></canvas>
-			</div>
 		</div>
-			<div class="chart-container salePriceChart">
-				<canvas id="salePriceChart"></canvas>
+			<div class="propertyUnitChart">
+				<canvas id="propertyUnitChart"></canvas>
+				<figcaption>Chart of Property Unit Distribution by Borough</figcaption>
 			</div>
-			<div class="chart-container stackedSaleComparisonChart">
+		
+			<div class="salePriceChart">
+				<canvas id="salePriceChart"></canvas>
+				<figcaption>Chart of Property Sales Prices by Borough</figcaption>
+			</div>
+			<div class="stackedSaleComparisonChart">
 				<canvas id="stackedSaleComparisonChart"></canvas>
+				
 			</div>
 		</div>
 	</div>
-			
 </section>
 <script src="js/script.js"></script>
 <footer>

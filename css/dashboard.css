@@ -9,6 +9,48 @@
   transition: .2s linear;
 }
 
+.chart {
+  max-width: 100%;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust column size as needed */
+  grid-gap: 20px; /* Adjust gap between charts */
+}
+
+.salePriceChart,
+.propertyUnitChart,
+.stackedSaleComparisonChart {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* .grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
+}
+
+.chart#chart {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+}
+
+.salePriceChart{
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.stackedSaleComparisonChart {
+  grid-column: 2;
+  grid-row: 2;
+} */
 html{
   font-size: 62.5%;
 }
@@ -98,12 +140,6 @@ section{
     }
   }
 
-.chart-container {
-  position: relative;
-  margin: auto;
-  height: 50vh; /* Adjust height as needed */
-  width: 50vw;  /* Adjust width as needed */
-}
 
 .filters {
 	display: flex;
