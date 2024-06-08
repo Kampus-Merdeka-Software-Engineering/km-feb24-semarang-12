@@ -11,6 +11,7 @@
 
 html{
   font-size: 62.5%;
+  position: relative;
 }
 
 section{
@@ -109,7 +110,6 @@ input,
 select{
     border-radius: 5px;
     background-color: white important;
-    
 }
 
 
@@ -129,6 +129,10 @@ th{
 
 .dataTables_wrapper .dataTables_length select {
     padding: 1px;
+}
+
+label{
+  padding: 0 0 10px 0;
 }
 
 .filter-year,

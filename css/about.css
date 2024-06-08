@@ -85,6 +85,8 @@ html{
 
 /* ends */
 
+/* card start */
+
 .slide-container{
     max-width: 1420px;
     width: 100%;
@@ -105,7 +107,7 @@ html{
     flex-direction: column;
     align-items: center;
     padding: 10px 14px;
-    height: 200px;
+    height: 230px;
   }
   .image-content{
     position: relative;
@@ -155,22 +157,45 @@ html{
     }
 
   .name{
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 500;
     color: #000000;
   }
 
   .role{
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 400;
     color: #333;
   }
 
   .description{
-    font-size: 14px;
+    font-size: 18px;
     color: #707070;
-    text-align: justify;
+    text-align: center;
   }
+  .icons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 5px;
+    position: absolute;
+    left: 150px;
+    top: 400px;
+}
+.icons a {
+	position: relative;
+	color: black;
+	font-size: 30px;
+}
+
+.icons a:not(:last-child) {
+	margin-right: 60px;
+}
+
+.icons a:hover {
+	transform: scale(1.5);
+}
   .swiper-navBtn{
     color: #6E93f7;
     transition: color 0.3s ease;
@@ -204,104 +229,15 @@ html{
       display: none;
     }
   }
-.card-about{
-display: flex;
-flex-direction: column;
-align-items: center;
-padding: 10px 14px;
-}
+    .card-about{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 14px;
+    }
 
-.image-content {
-position: relative;
-row-gap: 5px;
-padding: 25px 0;
-}
+    /* card stop */
 
-.overlay {
-position: absolute;
-left: 0;
-top: 0;
-height: 100%;
-width: 100%;
-background-color: #6f5a40;
-border-radius: 25px 25px 0 25px;
-}
-
-.overlay::before,
-.overlay::after {
-content: '';
-position: absolute;
-right: 0;
-bottom: -40px;
-height: 40px;
-width: 40px;
-background-color: #6f5a40;
-}
-
-.overlay::after {
-border-radius: 0 25px 0 0;
-background-color: #FFF;
-}
-
-.card-image {
-position: relative;
-height: 150px;
-width: 150px;
-border-radius: 50%;
-background: #FFF;
-padding: 3px;
-}
-
-.card-image .card-img {
-height: 100%;
-width: 100%;
-object-fit: cover;
-border-radius: 50%;
-border: 4px solid #6f5a40;
-}
-
-.name {
-font-size: 18px;
-font-weight: 500;
-color: #333;
-}
-
-.description {
-font-size: 14px;
-color: #707070;
-text-align: center;
-}
-
-.swiper-navBtn {
-color:#a0825d;
-transition: color 0.3s ease;
-}
-
-.swiper-navBtn:hover {
-color: #6f5a40;
-}
-
-.swiper-navBtn::before,
-.swiper-navBtn::after {
-font-size: 35px;
-}
-
-.swiper-button-next {
-right: 0;
-}
-
-.swiper-button-prev {
-left: 0;
-}
-
-.swiper-pagination-bullet {
-background-color: #886e4e;
-opacity: 1;
-}
-
-.swiper-pagination-bullet-active {
-background-color: #6f5a40;
-}
 /* footer start */
 footer {
     position: fixed;
