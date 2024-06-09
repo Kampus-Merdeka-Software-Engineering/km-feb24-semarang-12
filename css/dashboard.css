@@ -17,7 +17,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust column size as needed */
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); /* Adjust column size as needed */
   grid-gap: 20px; /* Adjust gap between charts */
 }
 
@@ -30,27 +30,17 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* .grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 20px;
+select#year{
+  padding: 10px;
+  border-radius: 10px;
+}
+label.lbl-year{
+  padding: 10px;
 }
 
-.chart#chart {
-  grid-column: 1 / span 2;
-  grid-row: 1;
+div.filter-year, div.filter-borough,div.stat{
+  background-color: #E6D1E7;
 }
-
-.salePriceChart{
-  grid-column: 1;
-  grid-row: 2;
-}
-
-.stackedSaleComparisonChart {
-  grid-column: 2;
-  grid-row: 2;
-} */
 html{
   font-size: 62.5%;
 }
