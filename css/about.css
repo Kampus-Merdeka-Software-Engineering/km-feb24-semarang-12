@@ -13,12 +13,6 @@ html{
   font-size: 62.5%;
 }
 
-section{
-    /* padding: 2rem 9%; */
-    /* padding: 9rem 0%; */
-    /* padding: 8rem 3%; */
-  }
-
 /* header */
 
 .header{
@@ -183,11 +177,9 @@ section{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto;
+    margin: 40px 0 0 0;
     padding: 5px;
-    position: absolute;
-    left: 150px;
-    top: 400px;
+    position: relative;
 }
 .icons a {
 	position: relative;

@@ -8,55 +8,21 @@
   text-transform: capitalize;
   transition: .2s linear;
 }
-
-.chart {
-  max-width: 100%;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); /* Adjust column size as needed */
-  grid-gap: 20px; /* Adjust gap between charts */
-}
-
-.salePriceChart,
-.propertyUnitChart,
-.stackedSaleComparisonChart {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-select#year{
-  padding: 10px;
-  border-radius: 10px;
-}
-label.lbl-year{
-  padding: 10px;
-}
-
-div.filter-year, div.filter-borough,div.stat{
-  background-color: #E6D1E7;
-}
 html{
   font-size: 62.5%;
 }
 
 section{
-    padding: 2rem 9%;
+    /* padding: 2rem 9%;
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    min-height: 100vh; */
     background: #e6e1d7;
 }
   /* header */
   
   .header{
-    position: fixed;
-    top: 0; left: 0; right: 0;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -120,43 +86,32 @@ section{
 
 .main-analytics {
 	text-align: center;
-	flex: 1;
-	padding: 20px;
-    margin-top: 40px;
+	padding: 0 20px 20px;
     h2 {
-        font-size: 40px;
-        margin-top: 5px;
-        margin-bottom: 10px;
+        font-size: 30px;
+        margin: 10px 0 10px 0;
     }
   }
 
-
-.filters {
-	display: flex;
-	align-items: flex-start;
-	gap: 20px;
-	margin-bottom: 20px;
-}
-
-.sorts {
-	display: flex;
-	flex-direction: column;
-	gap: 40px;
-}
+/* .filters {
+	display: grid;
+} */
 
 .filter-year,
 .filter-borough {
-	flex: 1;
 	padding: 10px;
 	background: white;
 	border-radius: 8px;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 	font-size: 12px;
     .lbl-year{
         font-size: 18px;
     }
     #borough label{
         font-size: 14px;
+    }
+    .lbl-borough{
+      font-size: 18px;
     }
 }
 
@@ -188,35 +143,57 @@ section{
 	margin-right: 8px;
 }
 
-
 .chart {
-    max-width: 100%;
-	background: white;
-	padding: 20px;
-	border-radius: 8px;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-width: 100%;
-    margin: 0 auto;
-        
+  max-width: 100%;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); /*Adjust column size as needed */
+  grid-gap: 20px; /* Adjust gap between charts */
+}
+
+.salePriceChart,
+.propertyUnitChart,
+.stackedSaleComparisonChart {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+select#year{
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+label.lbl-year{
+  padding: 10px;
+}
+
+div.filter-year{
+  background-color: #E6D1E7;
+}
+div.filter-borough{
+  background-color: whitesmoke;
+  gap: 10px;
+  display: grid;
+}
+
+div.stat{
+  margin-top: 10px;
 }
 
 .salePriceChart {
 	position: relative;
-	margin-top: 20px;
 }
-
-.stats {
-	display: flex;
-	gap: 5px;
-	flex-direction: column;
-}
-
 .stat {
 	background: white;
 	padding: 10px;
 	border-radius: 8px;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-	flex: 1;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 	text-align: center;
 }
 
@@ -230,8 +207,9 @@ section{
 	font-weight: bold;
 }
 
-
-  
+figcaption {
+  font-size: medium;
+}
 
 /* footer start */
 footer {
@@ -293,10 +271,6 @@ footer .media-icons a:hover {
     padding: 2rem;
   }
 
-  section{
-    padding: 2rem;
-  }
-
 }
 
 @media (max-width:768px){
@@ -334,41 +308,30 @@ footer .media-icons a:hover {
     font-size: 3rem;
   }
 
-  .home .content{
-    padding-top: 9.5rem;
-  }
-
-  .home .image img{
-    width: 368px;
-  } 
-
-  .home .content .title{
-    font-size: 4rem;
-  }
-
-  .home .content .description{
-    font-size: 1.6rem;
-  }
-
 }
 
 @media (max-width:430px){
   html{
     font-size: 50%;
   }
-  .home .content{
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+  div#chart{
+    grid-gap: 1px;
+    gap: 10px;
   }
 
-  .home .image{
-    padding-top: 2.5rem;
-  } 
-
-  .home .image img{
-    width: 400px;
-    justify-content: center;
-    border: #2a201c;
-    border-radius: 10px;
+  div.filter-year{
+    width: 350px;
   }
+
+  div.filter-borough, div.stat{
+    width: 330px;
+  }
+  .stats{
+    justify-content: start;
+  }
+
+  .salePriceChart, .propertyUnitChart, .stackedSaleComparisonChart{
+    width: 350px !important;
+  }
+
 }

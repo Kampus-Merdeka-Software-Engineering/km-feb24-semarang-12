@@ -37,17 +37,18 @@
             </nav>
                 <div id="menu" class="fas fa-bars"></div>
         </header>
-    <h2>Data Tables</h2>
+    <h2 class="title">Data Tables</h2>
     <div class="filters">
         <label for="yearFilter">Filter by Year:</label>
         <select id="yearFilter">
             <option value="">All Years</option>
         </select>
-        <label for="boroughFilter">Filter by Borough:</label>
+        <label for="boroughFilter">Sort by Borough :</label>
         <select id="boroughFilter">
             <option value="">All Boroughs</option>
         </select>
     </div>
+    <section class="wrapper">
     <table id="example" class="display" style="width:100%">   
         <thead>
             <tr>
@@ -61,22 +62,9 @@
             </tr>
         </thead>
     </table>
+    </section>
 	</section>
     <script src="js/data-table.js"></script>
-    <script>
-        let navbar = document.querySelector('.header .navbar')
-
-            document.querySelector('#menu').onclick = () =>{
-            navbar.classList.add('active');
-            }
-
-            document.querySelector('#close').onclick = () =>{
-            navbar.classList.remove('active');
-            }
-
-
-    </script>
-    
 	<footer>
 		<p>Copyright © 2024 Team 12 Section Semarang</p>
 		<nav>
