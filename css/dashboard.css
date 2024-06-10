@@ -130,7 +130,7 @@ section{
 	display: flex;
 	flex-wrap: wrap;
 	gap: 10px;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 #boroughs label {
@@ -284,7 +284,7 @@ footer .media-icons a:hover {
     font-size: 50%;
   }
   .header #menu{
-    display: inline-block;
+    display: block;
   }
 
   .header .navbar{
@@ -338,8 +338,32 @@ footer .media-icons a:hover {
     justify-content: start;
   }
 
-  .salePriceChart, .propertyUnitChart, .stackedSaleComparisonChart{
+  .salePriceChart, .propertyUnitChart, .stackedSaleComparisonChart, .unitSalesChart{
     width: 350px !important;
+  }
+
+}
+
+@media (max-width:360px){
+  div#chart{
+    grid-gap: 1px;
+    gap: 10px;
+  }
+
+  div.filter-year{
+    width: 280px;
+  }
+
+  div.filter-borough, div.stat{
+    width: 250px;
+  }
+  .stats{
+    justify-content: start;
+  }
+
+  .salePriceChart, .propertyUnitChart, .stackedSaleComparisonChart, .unitSalesChart{
+    width: 280px !important;
+    font-size: small;
   }
 
 }

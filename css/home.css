@@ -99,7 +99,7 @@ section{
 }
 
 .home .content .title{
-  font-size: 6rem;
+  font-size: 5rem;
   color: #fff;
   text-transform: uppercase;
 }
@@ -147,7 +147,7 @@ section{
   width: 100%;
   border: #2a201c;
   border-radius: 10px;
-  box-shadow: inset;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 2);
 }
 /* end */
 
@@ -341,6 +341,10 @@ footer .media-icons a:hover {
     font-size: 55%;
   }
 
+  .home .image img{
+    width: 95%;
+  }
+
   .header{
     padding: 2rem;
   }
@@ -348,17 +352,29 @@ footer .media-icons a:hover {
   section{
     padding: 2rem;
   }
+  
 
 }
 
 @media (max-width:768px){
-  html{
-    font-size: 85%;
-  }
+
 
   .home{
     align-content: center;
   }
+
+  /* .header{
+    padding: 2rem;
+  } */
+
+  .home .image img{
+    width: 508px;
+  } 
+
+  section{
+    padding: 2rem;
+  }
+
 
   div#menu {
     margin-right: 40px;
@@ -370,6 +386,7 @@ footer .media-icons a:hover {
 }
   .header #menu{
     display: inline-block;
+    margin-right: 90px;
   }
 
   .header .navbar{
@@ -392,6 +409,7 @@ footer .media-icons a:hover {
 
   .header .navbar #close{
     display: block;
+    margin-right: 90px;
   }
 
   .header .navbar a{
@@ -401,12 +419,10 @@ footer .media-icons a:hover {
     font-size: 3rem;
   }
 
-  .home .image img{
-    width: 608px;
-  } 
+  
 
   .home .content{
-    padding-top: 0;
+    margin-top: 50px;
   }
 
   .home .content .title{
@@ -429,8 +445,6 @@ footer .media-icons a:hover {
  }
 
   .home .content{
-    /* padding-top: 6.5rem; */
-    padding-top: 2.5rem;
     padding-bottom: 1.5rem;
   }
 

@@ -85,14 +85,14 @@ section{
 .filters {
     display: flex;
     align-items: flex-start;
-    gap: 20px;
+    gap: 5px;
     font-size: large;
     padding: 0 0 0 20px;
 }
 
   .title{
     font-size: xx-large;
-    padding: 10px;
+    padding: 5px 0 10px;
     text-align: center;
   }
 
@@ -120,7 +120,7 @@ div#example_length {
   border-radius: 10px;
   font-size: 18px;
   font-weight: bold;
-  padding: 0 0 10px;
+  padding-bottom: 10px;
 }
 
 th{
@@ -202,7 +202,7 @@ footer .media-icons a:hover {
 
 @media (max-width:991px){
     html{
-      font-size: 55%;
+      font-size: 45%;
     }
   
     .header{
@@ -218,9 +218,9 @@ footer .media-icons a:hover {
   @media (max-width:768px){
   
     .header #menu{
-      display: inline-block;
+      display :block;
+      margin-right: 40px;
     }
-  
     .header .navbar{
       position: fixed;
       top: 0; right: -105%;
@@ -249,31 +249,11 @@ footer .media-icons a:hover {
       text-align: center;
       font-size: 3rem;
     }
-  
-    .home .content{
-      padding-top: 9.5rem;
-    }
-  
-    .home .image img{
-      width: 368px;
-    } 
-  
-    .home .content .title{
-      font-size: 4rem;
-    }
-  
-    .home .content .description{
-      font-size: 1.6rem;
-    }
-  
+    
   }
   
   @media (max-width:430px){
     
-
-    html{
-      font-size: 50%;
-    }
     .home .content{
       padding-top: 1.5rem;
       padding-bottom: 1.5rem;
