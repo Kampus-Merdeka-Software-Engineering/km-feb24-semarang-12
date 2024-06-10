@@ -363,10 +363,6 @@ footer .media-icons a:hover {
     align-content: center;
   }
 
-  /* .header{
-    padding: 2rem;
-  } */
-
   .home .image img{
     width: 508px;
   } 
@@ -386,7 +382,6 @@ footer .media-icons a:hover {
 }
   .header #menu{
     display: inline-block;
-    margin-right: 90px;
   }
 
   .header .navbar{
@@ -409,7 +404,6 @@ footer .media-icons a:hover {
 
   .header .navbar #close{
     display: block;
-    margin-right: 90px;
   }
 
   .header .navbar a{
@@ -419,7 +413,6 @@ footer .media-icons a:hover {
     font-size: 3rem;
   }
 
-  
 
   .home .content{
     margin-top: 50px;
@@ -452,51 +445,13 @@ footer .media-icons a:hover {
     margin-bottom: 20px;
   }
   
-  /* .header #menu{
-    display: inline-block;
-  }
-
-  .header .navbar{
-    position: fixed;
-    top: 0; right: -105%;
-    width: 30rem;
-    background: rgba(255,255,255,0.2);
-    backdrop-filter: blur(50px);
-    transition: .5s;
-    height: 100%;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    z-index: 1200;
-  }
-
-  .header .navbar.active{
-    right: 0;
-  }
-
-  .header .navbar #close{
-    display: block;
-  }
-
-  .header .navbar a{
-    display: block;
-    margin: 1rem 0;
-    text-align: center;
-    font-size: 3rem;
-  } */
-
-
+}
   .home .image img{
-    width: 370px;
     justify-content: center;
     border: #2a201c;
     border-radius: 10px;
   }
 
-  .header #menu{
-    margin-right: 30px;
-  }
-}
 
 @media (max-width:360px){
   html{
@@ -515,14 +470,11 @@ footer .media-icons a:hover {
     }
   }
   
-  
   .home .content .title {
     font-size: 30px;
     margin-right: 30px;
 }
-  .image{
-    
-  } 
+ 
 
   .home .image img{
     width: 270px;
@@ -531,7 +483,5 @@ footer .media-icons a:hover {
     position: relative;
   }
 
-  .header #menu{
-    margin-right: 40px;
-  }
+
 }

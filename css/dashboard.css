@@ -284,7 +284,7 @@ footer .media-icons a:hover {
     font-size: 50%;
   }
   .header #menu{
-    display: block;
+    display: inline-block;
   }
 
   .header .navbar{
