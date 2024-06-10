@@ -157,6 +157,7 @@ section{
   grid-gap: 20px; /* Adjust gap between charts */
 }
 
+
 .salePriceChart,
 .propertyUnitChart,
 .stackedSaleComparisonChart,
@@ -321,8 +322,16 @@ footer .media-icons a:hover {
 
 @media (max-width:430px){
   html{
-    font-size: 50%;
+    font-size: 40%;
   }
+
+  /* .filter-year, .filter-borough, .stat{
+    width: 90%;
+  }
+
+  .chart {
+    grid-template-columns: 1fr;
+  } */
   div#chart{
     grid-gap: 1px;
     gap: 10px;
