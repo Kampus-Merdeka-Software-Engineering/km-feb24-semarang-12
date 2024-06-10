@@ -1,10 +1,11 @@
 // Fetch the JSON data and render charts
 let totalUnitsChart; 
+let totalsaleChart;
 async function fetchJsonData(year = null, boroughs = [], isFiltered = false) {
     
             try {
                 // Fetch data from the JSON file
-                const response = await fetch('data.json');
+                const response = await fetch('dataFull.json');
                 const data = await response.json();
                
                 // Filter data by year if a specific year is selected
@@ -51,13 +52,32 @@ async function fetchJsonData(year = null, boroughs = [], isFiltered = false) {
                 }, {});
 
                 // Prepare data for the doughnut chart
-                const labels = Object.keys(totalUnitsByBorough);
-                const totalUnits = Object.values(totalUnitsByBorough);
-
+                
                        // Destroy the previous doughnut chart if it exists
         if (totalUnitsChart) {
             totalUnitsChart.destroy();
         }
+
+        const labels = Object.keys(totalUnitsByBorough);
+                const totalUnits = Object.values(totalUnitsByBorough);
+
+                const totalsaleByBorough = filteredData.reduce((acc, curr) => {
+                    if (acc[curr.BOROUGH]) {
+                        acc[curr.BOROUGH] += curr["SALE PRICE"];
+                    } else {
+                        acc[curr.BOROUGH] = curr["SALE PRICE"];
+                    }
+                    return acc;
+                }, {});
+
+                // Prepare data for the doughnut chart
+                const labelss = Object.keys(totalsaleByBorough);
+                const salePrice = Object.values(totalsaleByBorough);
+
+        if (totalsaleChart) {
+            totalsaleChart.destroy();
+        }
+
 
                 // Render Doughnut Chart for total units
                 const ctx = document.getElementById('propertyUnitChart').getContext('2d');
@@ -367,10 +387,12 @@ function aggregateSalePricesByBorough(data) {
 // Function to update statistics
 function updateStats(data) {
     const totalUnits = data.reduce((acc, item) => acc + item["TOTAL UNITS"], 0);
+    const totalSale = data.reduce((acc, item) => acc + item["SALE PRICE"], 0);
     const residentialUnits = data.reduce((acc, item) => acc + item["RESIDENTIAL UNITS"], 0);
     const commercialUnits = data.reduce((acc, item) => acc + item["COMMERCIAL UNITS"], 0);
 
     document.getElementById("total-units").textContent = totalUnits.toLocaleString();
+    document.getElementById("total-sale").textContent = totalSale.toLocaleString();
     document.getElementById("residential-units").textContent = residentialUnits.toLocaleString();
     document.getElementById("commercial-units").textContent = commercialUnits.toLocaleString();
 }
