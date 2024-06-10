@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
 
 *{
-  font-family: "Poppins", sans-serif;
+  font-family: "Nunito", sans-serif;
   margin: 0; padding: 0;
   box-sizing: border-box;
   text-decoration: none;
@@ -12,10 +12,6 @@
 html{
   font-size: 62.5%;
 }
-
-section{
-    padding: 2rem 9%;
-  }
 
 /* header */
 
@@ -83,7 +79,7 @@ section{
 /* ends */
 
 .section-about{
-    position: relative;
+    position: fixed;
     width: 100%;
     min-height: 100vh;
     background: #e6e1d7;
@@ -94,7 +90,7 @@ section{
 .slide-container{
     max-width: 1420px;
     width: 100%;
-    padding: 100px 0;
+    padding: 25px 0;
   }
   .slide-content{
     margin: 0 40px;
@@ -181,11 +177,9 @@ section{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto;
+    margin: 40px 0 0 0;
     padding: 5px;
-    position: absolute;
-    left: 150px;
-    top: 400px;
+    position: relative;
 }
 .icons a {
 	position: relative;
@@ -201,7 +195,7 @@ section{
 	transform: scale(1.5);
 }
   .swiper-navBtn{
-    color: #6E93f7;
+    color: #9b6b32;
     transition: color 0.3s ease;
   }
   .swiper-navBtn:hover{
@@ -218,7 +212,7 @@ section{
     left: 0;
   }
   .swiper-pagination-bullet{
-    background-color: #6E93f7;
+    background-color: #9b6b32;
     opacity: 1;
   }
   .swiper-pagination-bullet-active{
@@ -244,7 +238,7 @@ section{
 
 /* footer start */
 footer {
-    position: fixed;
+    position:fixed;
     bottom: 0;
     width: 100%;
     background-color: #333;

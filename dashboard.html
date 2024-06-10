@@ -30,24 +30,32 @@
 	<div class="main-analytics">
 		<h2>DASHBOARD</h2>
 		<div class="chart" id="chart">
-			<div class="filters">
-				<div class="sorts">
 			<div class="filter-year">
 				<label class="lbl-year">Filter by Year</label>
 				<select name="year" id="year">
 					<option value="">Select Year</option>
 				</select> 
-			</div>
-
-			<div class="filter-borough">
-				<label for="">Filter by Borough</label>
-				<div id="boroughs">
-				<!-- Checkboxes will be dynamically populated here -->
-				</div>	
-			</div>
-			</div>
-
-			<div class="stats">
+				<div class="filter-borough">
+					<label class="lbl-borough">Filter by Borough</label>
+					<div id="boroughs">
+					<!-- Checkboxes will be dynamically populated here -->
+					</div>	
+				</div>
+				<div class="stats">
+					<div class="stat">
+						<h3>Total Units</h3>
+						<p id="total-units">0</p>
+					</div>
+					<div class="stat">
+						<h3>Residential Units</h3>
+						<p id="residential-units">0</p>
+					</div>
+					<div class="stat">
+						<h3>Commercial Units</h3>
+						<p id="commercial-units">0</p>
+				</div>
+		</div>
+			<!-- <div class="stats">
 				<div class="stat">
 					<h3>Total Units</h3>
 					<p id="total-units">0</p>
@@ -59,24 +67,34 @@
 				<div class="stat">
 					<h3>Commercial Units</h3>
 					<p id="commercial-units">0</p>
-				</div>
+				</div> -->
 			</div>
-		</div>
-			<div class="propertyUnitChart">
+
+			<div class="propertyUnitChart" style="width:auto">
+				<figcaption>Building Property Total Unit Sales Graph by Borough</figcaption>
 				<canvas id="propertyUnitChart"></canvas>
-				<figcaption>Chart of Property Unit Distribution by Borough</figcaption>
+				
 			</div>
 		
-			<div class="salePriceChart">
-				<canvas id="salePriceChart"></canvas>
+			<div class="salePriceChart" style="align-content: center">
 				<figcaption>Chart of Property Sales Prices by Borough</figcaption>
+				<canvas id="salePriceChart"></canvas>
+				
 			</div>
+
 			<div class="stackedSaleComparisonChart">
+				<figcaption>Chart of Sale Comparison in 2016/2017</figcaption>
 				<canvas id="stackedSaleComparisonChart"></canvas>
 				
 			</div>
+			<!-- <div class="unitSalesChart">
+				<canvas id="unitSalesChart"></canvas>
+				<figcaption>Chart of Unit Type Comparison Chart</figcaption>
+			</div> -->
+
 		</div>
 	</div>
+</div>
 </section>
 <script src="js/script.js"></script>
 <script>
@@ -89,8 +107,6 @@
 		document.querySelector('#close').onclick = () =>{
 		navbar.classList.remove('active');
 		}
-
-
 </script>
 <footer>
 	<p>Copyright © 2024 Team 12 Section Semarang</p>

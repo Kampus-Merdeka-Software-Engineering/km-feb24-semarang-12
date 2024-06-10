@@ -31,7 +31,6 @@ gsap.from('.description', {opacity: 0, duration: 1, delay: 1.8, y:30})
 gsap.from('.btn', {opacity: 0, duration: 1, delay: 2.1, y:30})
 gsap.from('.image', {opacity: 0, duration: 1, delay: 2.6, y:30})
 
-gsap.from('footer .media-icons', {opacity: 0, duration: 1, delay: 2.1, y:30, stagger: 0.2})
 
 
 //modal 
