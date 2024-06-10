@@ -125,6 +125,9 @@ async function fetchJsonData(year = null, boroughs = [], isFiltered = false) {
         // Call the renderStackedLineChart function here
         renderStackedLineChart(filteredData);
 
+        //Call the renderSaleTrendLineChart function here
+        renderSaleTrendLineChart(filteredData);
+
     } catch (error) {
         console.error('Error fetching data:', error);
     }
@@ -292,7 +295,7 @@ function renderStackedBarChart(ctx, filteredData, boroughs) {
     });
 }
 
-// Function to render the stacked line chart for dataFull.json
+// Function to render the stacked line chart for unit sales chart
 function renderStackedLineChart(data) {
     if (unitSalesChart) {
                 unitSalesChart.destroy();
@@ -395,9 +398,108 @@ function aggregateSalePricesByBorough(data) {
     }));
 }
 
-//Prepa
+//Prepare the data for sale price trends
+// function aggregateSalePricesByQuarter(data) {
+//     const quarterlyData = {
+//         labels: [],
+//         salePrices: []
+//     };
 
+//     // Initialize data structure for quarters
+//     for (let year = 2016; year <= 2017; year++) {
+//         for (let q = 1; q <= 4; q++) {
+//             quarterlyData.labels.push(`${year} Q${q}`);
+//             quarterlyData.salePrices.push(0);
+//         }
+//     }
 
+//     data.forEach(item => {
+//         const saleYear = item["SALE YEAR"];
+//         const saleDate = new Date(item["SALE DATE"] * 86400000); // Convert Excel date to JS date
+//         const quarter = Math.floor((saleDate.getMonth() + 3) / 3);
+//         const index = (saleYear - 2016) * 4 + (quarter - 1);
+//         quarterlyData.salePrices[index] += item["SALE PRICE"];
+//     });
+
+//     return quarterlyData;
+// }
+
+function renderSaleTrendLineChart(data) {
+    if (saleTrendChart) {
+        saleTrendChart.destroy();
+    }
+    const ctx = document.getElementById('saleTrendChart').getContext('2d');
+ // Convert sale date from numerical format to proper date and determine the quarter
+ const parseDate = (date) => {
+    const epoch = new Date(1900, 0, 1);
+    epoch.setDate(epoch.getDate() + date - 2); // Excel's epoch starts on January 1, 1900, and Excel incorrectly considers 1900 a leap year
+    return epoch;
+};
+
+const getQuarter = (date) => {
+    const month = date.getMonth() + 1; // Months are 0-indexed in JavaScript
+    return Math.ceil(month / 3);
+};
+
+// Aggregate data by quarter and unit type
+const aggregatedData = data.reduce((acc, curr) => {
+    const date = parseDate(curr["SALE DATE"]);
+    const year = date.getFullYear();
+    const quarter = `Q${getQuarter(date)}`;
+    const key = `${year}-${quarter}`;
+    if (!acc[key]) {
+        acc[key] = { yearQuarter: key, salePrice: 0 };
+    }
+    acc[key].salePrice += curr["SALE PRICE"];
+    return acc;
+}, {});
+
+const sortedData = Object.values(aggregatedData).sort((a, b) => a.yearQuarter.localeCompare(b.yearQuarter));
+
+const labels = sortedData.map(item => item.yearQuarter);
+const salePriceData = sortedData.map(item => item.salePrice);
+
+//render the line chart
+    saleTrendChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels:labels,
+            datasets: [
+                {
+                    label: 'Sale Price',
+                    data: salePriceData,
+                    borderColor: 'rgba(139, 69, 19, 0.6)',
+                    backgroundColor: 'rgba(139, 69, 19, 1)',
+                    fill: false
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    stacked: false,
+                },
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                            callback: function (value) { return value / 1e9 + 'B'; } // Format y-axis labels as billions
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top'
+                },
+                datalabels:{
+                    display: false
+                }
+            }
+        },
+        plugins: [ChartDataLabels]
+    });
+}
 
 
 // Function to update statistics

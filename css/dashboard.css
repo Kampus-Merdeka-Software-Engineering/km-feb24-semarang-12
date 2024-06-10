@@ -158,7 +158,8 @@ section{
 .salePriceChart,
 .propertyUnitChart,
 .stackedSaleComparisonChart,
-.unitSalesChart {
+.unitSalesChart,
+.saleTrendChart {
   background: white;
   padding: 20px;
   border-radius: 8px;
