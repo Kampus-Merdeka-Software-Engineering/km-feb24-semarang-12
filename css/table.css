@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
 
 *{
-  font-family: "Poppins", sans-serif;
+  font-family: "Nunito", sans-serif;
   margin: 0; padding: 0;
   box-sizing: border-box;
   text-decoration: none;
@@ -14,20 +14,12 @@ html{
 }
 
 section{
-    padding: 2rem 9%;
+    padding: 2rem 2%;
     position: relative;
     width: 100%;
     min-height: 100vh;
     background: #e6e1d7;
 }
-
-/* header */
-
-  
-  section{
-    padding: 2rem 9%;
-  }
-  
   /* header */
   
   .header{
@@ -94,20 +86,38 @@ section{
 
 /* Styling Analytics */
 .filters {
-	display: flex;
-	align-items: flex-start;
-	gap: 20px;
-	margin-bottom: 10px;
-    margin-top: 40px;
-    font-size: medium;
-    border-radius: 5px;
-}
-input,
-select{
-    border-radius: 5px;
-    background-color: white important;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 10px;
+    margin-top: 50px;
+    font-size: large;
 }
 
+input{
+    border-radius: 5px;
+    background-color: white !important;
+}
+
+.dataTables_wrapper .dataTables_length select {
+  border-radius: 10px;
+  padding: 1px;
+  width: 50px;
+}
+
+select#yearFilter,
+select#boroughFilter{
+    border-radius: 10px;
+    height: 25px;
+    width: 125px;
+}
+
+div#example_length {
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 0 0 10px;
+}
 
 th{
     background: brown;
@@ -120,11 +130,6 @@ th{
 
 .dataTables_wrapper{
     font-size: medium;
-    border: 1pc;
-}
-
-.dataTables_wrapper .dataTables_length select {
-    padding: 1px;
 }
 
 label{
