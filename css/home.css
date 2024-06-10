@@ -353,7 +353,22 @@ footer .media-icons a:hover {
 }
 
 @media (max-width:768px){
+  html{
+    font-size: 85%;
+  }
 
+  .home{
+    align-content: center;
+  }
+
+  div#menu {
+    margin-right: 40px;
+}
+
+.image #openModalBtn{
+  margin-top: 1rem;
+  margin-left: 0;
+}
   .header #menu{
     display: inline-block;
   }
@@ -387,13 +402,13 @@ footer .media-icons a:hover {
     font-size: 3rem;
   }
 
-  .home .content{
-    padding-top: 9.5rem;
-  }
-
   .home .image img{
-    width: 368px;
+    width: 608px;
   } 
+
+  .home .content{
+    padding-top: 0;
+  }
 
   .home .content .title{
     font-size: 4rem;
@@ -409,22 +424,86 @@ footer .media-icons a:hover {
   html{
     font-size: 50%;
   }
+
+ .home{
+  align-content: center;
+ }
+
+  .home .content{
+    /* padding-top: 6.5rem; */
+    padding-top: 2.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .home .image{
+    margin-bottom: 20px;
+  }
+  
+  /* .header #menu{
+    display: inline-block;
+  }
+
+  .header .navbar{
+    position: fixed;
+    top: 0; right: -105%;
+    width: 30rem;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(50px);
+    transition: .5s;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    z-index: 1200;
+  }
+
+  .header .navbar.active{
+    right: 0;
+  }
+
+  .header .navbar #close{
+    display: block;
+  }
+
+  .header .navbar a{
+    display: block;
+    margin: 1rem 0;
+    text-align: center;
+    font-size: 3rem;
+  } */
+
+
+  .home .image img{
+    width: 320px;
+    justify-content: center;
+    border: #2a201c;
+    border-radius: 10px;
+  }
+
+  .header #menu{
+    margin-right: 30px;
+  }
+}
+
+@media (max-width:360px){
+  html{
+    font-size: 50%;
+  }
+
   .home .content{
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
   }
 
-  .home .image{
-    padding-top: 2.5rem;
-    position: relative;
-    bottom: 180px;
+  .image{
+    
   } 
 
   .home .image img{
-    width: 390px;
-    justify-content: center;
+    width: 320px;
     border: #2a201c;
     border-radius: 10px;
+    position: relative;
   }
 
   .header #menu{
