@@ -1,11 +1,12 @@
 // Fetch the JSON data and render charts
 let totalUnitsChart;
 let unitSalesChart;
+let saleTrendChart;
 
 async function fetchJsonData(year = null, boroughs = [], isFiltered = false) {
     try {
         // Fetch data from the JSON file
-        const response = await fetch('data.json');
+        const response = await fetch('dataFull.json');
         const data = await response.json();
 
         // Filter data by year if a specific year is selected
@@ -292,52 +293,29 @@ function renderStackedBarChart(ctx, filteredData, boroughs) {
 }
 
 // Function to render the stacked line chart for dataFull.json
-// function renderStackedLineChart(data) {
-//     const ctx = document.getElementById('stackedLineChart').getContext('2d');
-
-//     // Convert sale date from numerical format to proper date and determine the quarter
-//     const parseDate = (date) => {
-//         const epoch = new Date(1900, 0, 1);
-//         epoch.setDate(epoch.getDate() + date - 2); // Excel's epoch starts on January 1, 1900, and Excel incorrectly considers 1900 a leap year
-//         return epoch;
-//     };
-
-//     const getQuarter = (date) => {
-//         const month = date.getMonth() + 1; // Months are 0-indexed in JavaScript
-//         return Math.ceil(month / 3);
-//     };
-
-//     // Aggregate data by quarter and unit type
-//     const aggregatedData = data.reduce((acc, curr) => {
-//         const date = parseDate(curr["SALE DATE"]);
-//         const year = date.getFullYear();
-//         const quarter = `Q${getQuarter(date)}`;
-//         const key = `${year}-${quarter}`;
-//         if (!acc[key]) {
-//             acc[key] = { yearQuarter: key, residential: 0, commercial: 0 };
-//         }
-//         acc[key].residential += curr["RESIDENTIAL UNITS"];
-//         acc[key].commercial += curr["COMMERCIAL UNITS"];
-//         return acc;
-//     }, {});
-
-//     const sortedData = Object.values(aggregatedData).sort((a, b) => a.yearQuarter.localeCompare(b.yearQuarter));
-
-//     const labels = sortedData.map(item => item.yearQuarter);
-//     const residentialData = sortedData.map(item => item.residential);
-//     const commercialData = sortedData.map(item => item.commercial);
-
-// Function to render the stacked line chart for data.json
 function renderStackedLineChart(data) {
     if (unitSalesChart) {
-        unitSalesChart.destroy();
-    }
+                unitSalesChart.destroy();
+            }
     const ctx = document.getElementById('unitSalesChart').getContext('2d');
+
+    // Convert sale date from numerical format to proper date and determine the quarter
+    const parseDate = (date) => {
+        const epoch = new Date(1900, 0, 1);
+        epoch.setDate(epoch.getDate() + date - 2); // Excel's epoch starts on January 1, 1900, and Excel incorrectly considers 1900 a leap year
+        return epoch;
+    };
+
+    const getQuarter = (date) => {
+        const month = date.getMonth() + 1; // Months are 0-indexed in JavaScript
+        return Math.ceil(month / 3);
+    };
 
     // Aggregate data by quarter and unit type
     const aggregatedData = data.reduce((acc, curr) => {
-        const year = curr["SALE YEAR"];
-        const quarter = `Q${Math.ceil(curr["SALE DATE"].split('/')[0] / 3)}`;
+        const date = parseDate(curr["SALE DATE"]);
+        const year = date.getFullYear();
+        const quarter = `Q${getQuarter(date)}`;
         const key = `${year}-${quarter}`;
         if (!acc[key]) {
             acc[key] = { yearQuarter: key, residential: 0, commercial: 0 };
@@ -352,8 +330,8 @@ function renderStackedLineChart(data) {
     const labels = sortedData.map(item => item.yearQuarter);
     const residentialData = sortedData.map(item => item.residential);
     const commercialData = sortedData.map(item => item.commercial);
-
-
+    
+//function to render the stacked line chart
     unitSalesChart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -416,6 +394,11 @@ function aggregateSalePricesByBorough(data) {
         "SALE PRICE": salePrice
     }));
 }
+
+//Prepa
+
+
+
 
 // Function to update statistics
 function updateStats(data) {
