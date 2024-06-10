@@ -134,7 +134,7 @@ section{
 #boroughs label {
 	display: flex;
 	align-items: center;
-	background: brown;
+	background: #D3AD7F;
 	padding: 5px 10px;
 	border-radius: 8px;
 }
@@ -157,7 +157,8 @@ section{
 
 .salePriceChart,
 .propertyUnitChart,
-.stackedSaleComparisonChart {
+.stackedSaleComparisonChart,
+.unitSalesChart {
   background: white;
   padding: 20px;
   border-radius: 8px;
@@ -174,7 +175,7 @@ label.lbl-year{
 }
 
 div.filter-year{
-  background-color: #E6D1E7;
+  background-color: #D3AD7F;
 }
 div.filter-borough{
   background-color: whitesmoke;

@@ -1,209 +1,211 @@
 // Fetch the JSON data and render charts
-let totalUnitsChart; 
+let totalUnitsChart;
+let unitSalesChart;
+
 async function fetchJsonData(year = null, boroughs = [], isFiltered = false) {
-    
-            try {
-                // Fetch data from the JSON file
-                const response = await fetch('data.json');
-                const data = await response.json();
-               
-                // Filter data by year if a specific year is selected
-                let filteredData = data;
-                if (year) {
-                    filteredData = filteredData.filter(row => row["SALE YEAR"] === Number(year));
-                }
+    try {
+        // Fetch data from the JSON file
+        const response = await fetch('data.json');
+        const data = await response.json();
 
-                // Filter data by boroughs if specific boroughs are selected
-                if (boroughs.length > 0) {
-                    filteredData = filteredData.filter(row => boroughs.includes(row["BOROUGH"]));
-                }
+        // Filter data by year if a specific year is selected
+        let filteredData = data;
+        if (year) {
+            filteredData = filteredData.filter(row => row["SALE YEAR"] === Number(year));
+        }
 
-                // Aggregate and sort the sale prices by borough
-                const saleData = aggregateSalePricesByBorough(filteredData).sort((a, b) => b["SALE PRICE"] - a["SALE PRICE"]);
+        // Filter data by boroughs if specific boroughs are selected
+        if (boroughs.length > 0) {
+            filteredData = filteredData.filter(row => boroughs.includes(row["BOROUGH"]));
+        }
 
-                // Extract borough names and sale prices
-                const boroughNames = saleData.map(item => item["BOROUGH"]);
-                const salePrices = saleData.map(item => item["SALE PRICE"]);
+        // Aggregate and sort the sale prices by borough
+        const saleData = aggregateSalePricesByBorough(filteredData).sort((a, b) => b["SALE PRICE"] - a["SALE PRICE"]);
 
-                // Get unique years from the data and sort them
-                const yearOptions = Array.from(new Set(data.map(row => row["SALE YEAR"]))).sort();
+        // Extract borough names and sale prices
+        const boroughNames = saleData.map(item => item["BOROUGH"]);
+        const salePrices = saleData.map(item => item["SALE PRICE"]);
 
-                // Populate the year dropdown if not filtered by year
-                populateYearDropdown(yearOptions, !year);
+        // Get unique years from the data and sort them
+        const yearOptions = Array.from(new Set(data.map(row => row["SALE YEAR"]))).sort();
 
-                // Populate borough checkboxes if not already populated
-                populateBoroughCheckboxes(data);
+        // Populate the year dropdown if not filtered by year
+        populateYearDropdown(yearOptions, !year);
 
-                // Update statistics
-                updateStats(filteredData);
+        // Populate borough checkboxes if not already populated
+        populateBoroughCheckboxes(data);
 
-                // Render charts
-                renderCharts(isFiltered, boroughNames, salePrices, filteredData);
+        // Update statistics
+        updateStats(filteredData);
 
-                // Calculate total units by borough for the doughnut chart
-                const totalUnitsByBorough = filteredData.reduce((acc, curr) => {
-                    if (acc[curr.BOROUGH]) {
-                        acc[curr.BOROUGH] += curr["TOTAL UNITS"];
-                    } else {
-                        acc[curr.BOROUGH] = curr["TOTAL UNITS"];
-                    }
-                    return acc;
-                }, {});
+        // Render charts
+        renderCharts(isFiltered, boroughNames, salePrices, filteredData);
 
-                // Prepare data for the doughnut chart
-                const labels = Object.keys(totalUnitsByBorough);
-                const totalUnits = Object.values(totalUnitsByBorough);
+        // Calculate total units by borough for the doughnut chart
+        const totalUnitsByBorough = filteredData.reduce((acc, curr) => {
+            if (acc[curr.BOROUGH]) {
+                acc[curr.BOROUGH] += curr["TOTAL UNITS"];
+            } else {
+                acc[curr.BOROUGH] = curr["TOTAL UNITS"];
+            }
+            return acc;
+        }, {});
 
-                       // Destroy the previous doughnut chart if it exists
+        // Prepare data for the doughnut chart
+        const labels = Object.keys(totalUnitsByBorough);
+        const totalUnits = Object.values(totalUnitsByBorough);
+
+        // Destroy the previous doughnut chart if it exists
         if (totalUnitsChart) {
             totalUnitsChart.destroy();
         }
 
-                // Render Doughnut Chart for total units
-                const ctx = document.getElementById('propertyUnitChart').getContext('2d');
-                totalUnitsChart = new Chart(ctx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: labels,
-                        datasets: [{
-                            data: totalUnits,
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.6)',
-                                'rgba(54, 162, 235, 0.6)',
-                                'rgba(255, 206, 86, 0.6)',
-                                'rgba(75, 192, 192, 0.6)',
-                                'rgba(153, 102, 255, 0.6)',
-                                'rgba(255, 159, 64, 0.6)'
-                            ],
-                            borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                            borderWidth: 1
-                        }]
+        // Render Doughnut Chart for total units
+        const ctx = document.getElementById('propertyUnitChart').getContext('2d');
+        totalUnitsChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: totalUnits,
+                    backgroundColor: [
+                        'rgba(139, 69, 19, 0.6)',
+                        'rgba(153, 102, 255, 0.6)',
+                        'rgba(134, 214, 170, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(223, 217, 84, 0.6)',
+                    ],
+                    borderColor: [
+                        'rgba(139, 69, 19, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(134, 214, 170, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(223, 217, 84, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
                     },
-                    options: {
-                        responsive: true,
-                        plugins: {
-                            legend: {
-                                position: 'top',
-                            },
-                            tooltip: {
-                                callbacks: {
-                                    label: function(tooltipItem) {
-                                        const value = tooltipItem.raw;
-                                        const percentage = ((value / totalUnits.reduce((a, b) => a + b, 0)) * 100).toFixed(2);
-                                        return `${tooltipItem.label}: ${percentage}% (Total Units: ${value})`;
-                                    }
-                                }
-                            },
-                            datalabels: {
-                                formatter: (value, ctx) => {
-                                    const total = ctx.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
-                                    const percentage = ((value / total) * 100).toFixed(2) + "%";
-                                    return percentage;
-                                },
-                                color: '#000',
-                                labels: {
-                                    title: {
-                                        font: {
-                                            size: '14',
-                                            weight: 'bold'
-                                        }
-                                    }
-                                }
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                const value = tooltipItem.raw;
+                                const percentage = ((value / totalUnits.reduce((a, b) => a + b, 0)) * 100).toFixed(2);
+                                return `${tooltipItem.label}: ${percentage}% (Total Units: ${value})`;
                             }
                         }
                     },
-                    plugins: [ChartDataLabels]
-                });
+                    datalabels: {
+                        formatter: (value, ctx) => {
+                            const total = ctx.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+                            const percentage = ((value / total) * 100).toFixed(2) + "%";
+                            return percentage;
+                        },
+                        color: '#000',
+                        labels: {
+                            title: {
+                                font: {
+                                    size: '14',
+                                    weight: 'bold'
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            plugins: [ChartDataLabels]
+        });
 
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        }
+        // Call the renderStackedLineChart function here
+        renderStackedLineChart(filteredData);
 
-        // Populate the year dropdown with options
-        function populateYearDropdown(yearOptions, shouldPopulate) {
-            const yearElement = document.getElementById("year");
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
 
-            if (shouldPopulate && yearElement.options.length <= 1) {
-                yearOptions.forEach(year => {
-                    const option = document.createElement("option");
-                    option.value = year;
-                    option.text = year;
-                    yearElement.appendChild(option);
-                });
+// Populate the year dropdown with options
+function populateYearDropdown(yearOptions, shouldPopulate) {
+    const yearElement = document.getElementById("year");
 
-                // Add event listener to filter by year on change
-                yearElement.addEventListener("change", filterByYear);
-            }
-        }
+    if (shouldPopulate && yearElement.options.length <= 1) {
+        yearOptions.forEach(year => {
+            const option = document.createElement("option");
+            option.value = year;
+            option.text = year;
+            yearElement.appendChild(option);
+        });
 
-        // Populate borough checkboxes with options
-        function populateBoroughCheckboxes(data) {
-            const boroughOptions = Array.from(new Set(data.map(row => row.BOROUGH)));
-            const boroughContainer = document.getElementById("boroughs");
+        // Add event listener to filter by year on change
+        yearElement.addEventListener("change", filterByYear);
+    }
+}
 
-            if (boroughContainer.children.length === 0) {
-                boroughOptions.forEach(borough => {
-                    const label = document.createElement("label");
-                    const checkbox = document.createElement("input");
-                    checkbox.type = "checkbox";
-                    checkbox.value = borough;
-                    checkbox.name = "borough";
-                    checkbox.addEventListener("change", filterByBorough);
-                    label.appendChild(checkbox);
-                    label.appendChild(document.createTextNode(borough));
-                    boroughContainer.appendChild(label);
-                });
-            }
-        }
+// Populate borough checkboxes with options
+function populateBoroughCheckboxes(data) {
+    const boroughOptions = Array.from(new Set(data.map(row => row.BOROUGH)));
+    const boroughContainer = document.getElementById("boroughs");
 
-        // Event handler to filter data by selected year
-        function filterByYear() {
-            const year = document.getElementById("year").value;
-            const boroughs = Array.from(document.querySelectorAll('#boroughs input:checked')).map(checkbox => checkbox.value);
-            fetchJsonData(year, boroughs, true);
-        }
+    if (boroughContainer.children.length === 0) {
+        boroughOptions.forEach(borough => {
+            const label = document.createElement("label");
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.value = borough;
+            checkbox.name = "borough";
+            checkbox.addEventListener("change", filterByBorough);
+            label.appendChild(checkbox);
+            label.appendChild(document.createTextNode(borough));
+            boroughContainer.appendChild(label);
+        });
+    }
+}
 
-        // Event handler to filter data by selected borough
-        function filterByBorough() {
-            const year = document.getElementById("year").value;
-            const boroughs = Array.from(document.querySelectorAll('#boroughs input:checked')).map(checkbox => checkbox.value);
-            fetchJsonData(year, boroughs, true);
-        }
+// Event handler to filter data by selected year
+function filterByYear() {
+    const year = document.getElementById("year").value;
+    const boroughs = Array.from(document.querySelectorAll('#boroughs input:checked')).map(checkbox => checkbox.value);
+    fetchJsonData(year, boroughs, true);
+}
 
-        // Function to render all charts
-        function renderCharts(isFiltered, boroughNames, salePrices, data) {
-            const chartElement = document.getElementById("chart");
+// Event handler to filter data by selected borough
+function filterByBorough() {
+    const year = document.getElementById("year").value;
+    const boroughs = Array.from(document.querySelectorAll('#boroughs input:checked')).map(checkbox => checkbox.value);
+    fetchJsonData(year, boroughs, true);
+}
 
-            // Render or update bar chart
-            const salePriceCtx = createOrUpdateCanvas(chartElement, 'salePriceChart', isFiltered);
-            renderBarChart(salePriceCtx, boroughNames, salePrices);
+// Function to render all charts
+function renderCharts(isFiltered, boroughNames, salePrices, data) {
+    const chartElement = document.getElementById("chart");
 
-            // Render or update stacked bar chart for 2016 and 2017
-            const stackedSaleComparisonCtx = createOrUpdateCanvas(chartElement, 'stackedSaleComparisonChart', isFiltered);
-            renderStackedBarChart(stackedSaleComparisonCtx, data.filter(row => [2016, 2017].includes(row["SALE YEAR"])), boroughNames);
-        }
+    // Render or update bar chart
+    const salePriceCtx = createOrUpdateCanvas(chartElement, 'salePriceChart', isFiltered);
+    renderBarChart(salePriceCtx, boroughNames, salePrices);
 
-        // Create or update canvas element for chart
-        function createOrUpdateCanvas(parentElement, canvasId, shouldUpdate) {
-            if (shouldUpdate) {
-                const oldCanvas = document.getElementById(canvasId);
-                oldCanvas.remove();
-                const newCanvas = document.createElement("canvas");
-                newCanvas.id = canvasId;
-                parentElement.querySelector(`.${canvasId}`).appendChild(newCanvas);
-                return newCanvas.getContext('2d');
-            } else {
-                return document.getElementById(canvasId).getContext('2d');
-            }
-        }
+    // Render or update stacked bar chart for 2016 and 2017
+    const stackedSaleComparisonCtx = createOrUpdateCanvas(chartElement, 'stackedSaleComparisonChart', isFiltered);
+    renderStackedBarChart(stackedSaleComparisonCtx, data.filter(row => [2016, 2017].includes(row["SALE YEAR"])), boroughNames);
+}
+
+// Create or update canvas element for chart
+function createOrUpdateCanvas(parentElement, canvasId, shouldUpdate) {
+    if (shouldUpdate) {
+        const oldCanvas = document.getElementById(canvasId);
+        oldCanvas.remove();
+        const newCanvas = document.createElement("canvas");
+        newCanvas.id = canvasId;
+        parentElement.querySelector(`.${canvasId}`).appendChild(newCanvas);
+        return newCanvas.getContext('2d');
+    } else {
+        return document.getElementById(canvasId).getContext('2d');
+    }
+}
 
 // Function to render the bar chart
 function renderBarChart(ctx, labels, data) {
@@ -242,9 +244,8 @@ function renderBarChart(ctx, labels, data) {
 }
 
 // Function to render the stacked bar chart
-function renderStackedBarChart(ctx, data, boroughs) {
-    const years = [2016, 2017];
-    const filteredData = data.filter(row => years.includes(row["SALE YEAR"]));
+function renderStackedBarChart(ctx, filteredData, boroughs) {
+    const years = Array.from(new Set(filteredData.map(row => row["SALE YEAR"])));
     const aggregatedData = years.map(year => aggregateSalePricesByBorough(filteredData.filter(row => row["SALE YEAR"] === year)));
 
     const datasets = years.map((year, index) => ({
@@ -253,8 +254,8 @@ function renderStackedBarChart(ctx, data, boroughs) {
             const saleData = aggregatedData[index].find(row => row["BOROUGH"] === borough);
             return saleData ? saleData["SALE PRICE"] : 0;
         }),
-        backgroundColor: index % 2 === 0 ? 'rgba(75, 192, 192, 0.6)' : 'rgba(153, 102, 255, 0.6)', // Alternate colors
-        borderColor: index % 2 === 0 ? 'rgba(75, 192, 192, 1)' : 'rgba(153, 102, 255, 1)',
+        backgroundColor: index % 2 === 0 ? 'rgba(223, 217, 84, 0.6)' : 'rgba(139, 69, 19, 0.6)',
+        borderColor: index % 2 === 0 ? 'rgba(223, 217, 84, 1)' : 'rgba(139, 69, 19, 1)',
         borderWidth: 1
     }));
 
@@ -290,34 +291,84 @@ function renderStackedBarChart(ctx, data, boroughs) {
     });
 }
 
+// Function to render the stacked line chart for dataFull.json
+// function renderStackedLineChart(data) {
+//     const ctx = document.getElementById('stackedLineChart').getContext('2d');
 
-// Function to render the double line chart for unit type comparison
-function renderDoubleLineChart(ctx, data, boroughs) {
-    const years = [2016, 2017];
-    const filteredData = data.filter(row => years.includes(row["SALE YEAR"]));
-    
-    // Aggregate sale prices by unit type and year
-    const aggregatedData = years.map(year => ({
-        year: year,
-        residential: filteredData.filter(row => row["SALE YEAR"] === year && row["UNIT TYPE"] === "Residential").length,
-        commercial: filteredData.filter(row => row["SALE YEAR"] === year && row["UNIT TYPE"] === "Commercial").length
-    }));
+//     // Convert sale date from numerical format to proper date and determine the quarter
+//     const parseDate = (date) => {
+//         const epoch = new Date(1900, 0, 1);
+//         epoch.setDate(epoch.getDate() + date - 2); // Excel's epoch starts on January 1, 1900, and Excel incorrectly considers 1900 a leap year
+//         return epoch;
+//     };
 
-    new Chart(ctx, {
+//     const getQuarter = (date) => {
+//         const month = date.getMonth() + 1; // Months are 0-indexed in JavaScript
+//         return Math.ceil(month / 3);
+//     };
+
+//     // Aggregate data by quarter and unit type
+//     const aggregatedData = data.reduce((acc, curr) => {
+//         const date = parseDate(curr["SALE DATE"]);
+//         const year = date.getFullYear();
+//         const quarter = `Q${getQuarter(date)}`;
+//         const key = `${year}-${quarter}`;
+//         if (!acc[key]) {
+//             acc[key] = { yearQuarter: key, residential: 0, commercial: 0 };
+//         }
+//         acc[key].residential += curr["RESIDENTIAL UNITS"];
+//         acc[key].commercial += curr["COMMERCIAL UNITS"];
+//         return acc;
+//     }, {});
+
+//     const sortedData = Object.values(aggregatedData).sort((a, b) => a.yearQuarter.localeCompare(b.yearQuarter));
+
+//     const labels = sortedData.map(item => item.yearQuarter);
+//     const residentialData = sortedData.map(item => item.residential);
+//     const commercialData = sortedData.map(item => item.commercial);
+
+// Function to render the stacked line chart for data.json
+function renderStackedLineChart(data) {
+    if (unitSalesChart) {
+        unitSalesChart.destroy();
+    }
+    const ctx = document.getElementById('unitSalesChart').getContext('2d');
+
+    // Aggregate data by quarter and unit type
+    const aggregatedData = data.reduce((acc, curr) => {
+        const year = curr["SALE YEAR"];
+        const quarter = `Q${Math.ceil(curr["SALE DATE"].split('/')[0] / 3)}`;
+        const key = `${year}-${quarter}`;
+        if (!acc[key]) {
+            acc[key] = { yearQuarter: key, residential: 0, commercial: 0 };
+        }
+        acc[key].residential += curr["RESIDENTIAL UNITS"];
+        acc[key].commercial += curr["COMMERCIAL UNITS"];
+        return acc;
+    }, {});
+
+    const sortedData = Object.values(aggregatedData).sort((a, b) => a.yearQuarter.localeCompare(b.yearQuarter));
+
+    const labels = sortedData.map(item => item.yearQuarter);
+    const residentialData = sortedData.map(item => item.residential);
+    const commercialData = sortedData.map(item => item.commercial);
+
+
+    unitSalesChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: boroughs,
+            labels: labels,
             datasets: [{
-                label: 'Residential',
-                data: aggregatedData.map(item => item.residential),
-                borderColor: 'rgba(255, 99, 132, 1)',
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                label: 'Residential Units',
+                data: residentialData,
+                borderColor: 'rgba(166, 159, 78, 0.6)',
+                backgroundColor: 'rgba(223, 217, 84, 1)',
                 fill: false
             }, {
-                label: 'Commercial',
-                data: aggregatedData.map(item => item.commercial),
-                borderColor: 'rgba(54, 162, 235, 1)',
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                label: 'Commercial Units',
+                data: commercialData,
+                borderColor: 'rgba(139, 69, 19, 0.6)',
+                backgroundColor: 'rgba(139, 69, 19, 1)',
                 fill: false
             }]
         },
@@ -325,23 +376,25 @@ function renderDoubleLineChart(ctx, data, boroughs) {
             responsive: true,
             scales: {
                 x: {
-                    stacked: true,
+                    stacked: true
                 },
                 y: {
                     beginAtZero: true,
-                    ticks: {
-                        stepSize: 1
-                    }
                 }
             },
             plugins: {
                 legend: {
                     display: true,
                     position: 'top'
+                },
+                datalabels: {
+                    display: false // Hide data labels
                 }
             }
-        }
+        },
+        plugins: [ChartDataLabels]
     });
+    
 }
 
 // Function to aggregate sale prices by borough
