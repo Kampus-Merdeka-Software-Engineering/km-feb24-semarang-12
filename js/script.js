@@ -403,10 +403,12 @@ function aggregateSalePricesByBorough(data) {
 // Function to update statistics
 function updateStats(data) {
     const totalUnits = data.reduce((acc, item) => acc + item["TOTAL UNITS"], 0);
+    const totalSale = data.reduce((acc, item) => acc + item["SALE PRICE"], 0);
     const residentialUnits = data.reduce((acc, item) => acc + item["RESIDENTIAL UNITS"], 0);
     const commercialUnits = data.reduce((acc, item) => acc + item["COMMERCIAL UNITS"], 0);
 
     document.getElementById("total-units").textContent = totalUnits.toLocaleString();
+    document.getElementById("total-sale").textContent = totalSale.toLocaleString();
     document.getElementById("residential-units").textContent = residentialUnits.toLocaleString();
     document.getElementById("commercial-units").textContent = commercialUnits.toLocaleString();
 }
