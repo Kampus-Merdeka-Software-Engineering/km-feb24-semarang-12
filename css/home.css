@@ -341,10 +341,6 @@ footer .media-icons a:hover {
     font-size: 55%;
   }
 
-  .home .image img{
-    width: 95%;
-  }
-
   .header{
     padding: 2rem;
   }
@@ -362,10 +358,6 @@ footer .media-icons a:hover {
   .home{
     align-content: center;
   }
-
-  .home .image img{
-    width: 508px;
-  } 
 
   section{
     padding: 2rem;
@@ -452,7 +444,7 @@ footer .media-icons a:hover {
     border-radius: 10px;
   }
 
-
+/* 
 @media (max-width:360px){
   html{
     font-size: 60%;
@@ -484,4 +476,4 @@ footer .media-icons a:hover {
   }
 
 
-}
+} */

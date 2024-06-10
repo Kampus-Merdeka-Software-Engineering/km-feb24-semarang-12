@@ -10,7 +10,7 @@ let navbar = document.querySelector('.header .navbar')
 
 $(document).ready(function() {
   // Fetch the JSON data
-  $.getJSON('data.json', function(data) {
+  $.getJSON('dataFull.json', function(data) {
       // Extract unique years and boroughs
       const years = [...new Set(data.map(item => item["SALE YEAR"]))].sort();
       const boroughs = [...new Set(data.map(item => item["BOROUGH"]))].sort();
