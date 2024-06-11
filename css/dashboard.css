@@ -348,18 +348,39 @@ footer .media-icons a:hover {
 }
 
 @media (max-width:390px){
+  div#chart{
+    grid-gap: 1px;
+    gap: 10px;
+  }
   .salePriceChart, .propertyUnitChart, .stackedSaleComparisonChart, .unitSalesChart, .saleTrendChart{
-    width: 320px !important;
+    width: 300px !important;
     font-size: small;
   }
   
   div.filter-year{
-    width: 320px;
+    width: 300px;
   }
 
   div.filter-borough, div.stat{
+    width: 270px;
+  }
+}
+
+@media (max-width:375px){
+
+  div.filter-year{
     width: 290px;
   }
+
+  div.filter-borough, div.stat{
+    width: 260px;
+  }
+
+  .salePriceChart, .propertyUnitChart, .stackedSaleComparisonChart, .unitSalesChart, .saleTrendChart{
+    width: 290px !important;
+    font-size: small;
+  }
+
 }
 
 @media (max-width:360px){
