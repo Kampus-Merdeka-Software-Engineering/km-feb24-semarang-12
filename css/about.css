@@ -79,13 +79,13 @@ html{
 /* ends */
 
 .section-about{
-    position: fixed;
+    position: relative;
     width: 100%;
     min-height: 100vh;
     background: #e6e1d7;
     h2{
       font-size: 30px;
-        margin: 10px 0 10px 0;
+      padding: 10px;
         text-align: center;
     }
 }
@@ -248,7 +248,7 @@ html{
 
 /* footer start */
 footer {
-    position:fixed;
+    position:relative;
     bottom: 0;
     width: 100%;
     background-color: #333;
@@ -306,9 +306,6 @@ footer .media-icons a:hover {
     padding: 2rem;
   }
 
-  section{
-    padding: 2rem;
-  }
 
 }
 
