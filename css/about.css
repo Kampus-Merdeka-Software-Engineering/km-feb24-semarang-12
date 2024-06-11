@@ -83,6 +83,11 @@ html{
     width: 100%;
     min-height: 100vh;
     background: #e6e1d7;
+    h2{
+      font-size: 30px;
+        margin: 10px 0 10px 0;
+        text-align: center;
+    }
 }
 
 /* card start */
