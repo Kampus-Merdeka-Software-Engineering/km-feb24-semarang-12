@@ -338,7 +338,7 @@ footer .media-icons a:hover {
   }
 
   .salePriceChart, .propertyUnitChart, .stackedSaleComparisonChart, .unitSalesChart, .saleTrendChart{
-    width: 350px !important;
+    width: 280px !important;
   }
 
 }

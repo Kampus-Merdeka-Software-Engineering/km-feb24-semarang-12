@@ -398,31 +398,6 @@ function aggregateSalePricesByBorough(data) {
     }));
 }
 
-//Prepare the data for sale price trends
-// function aggregateSalePricesByQuarter(data) {
-//     const quarterlyData = {
-//         labels: [],
-//         salePrices: []
-//     };
-
-//     // Initialize data structure for quarters
-//     for (let year = 2016; year <= 2017; year++) {
-//         for (let q = 1; q <= 4; q++) {
-//             quarterlyData.labels.push(`${year} Q${q}`);
-//             quarterlyData.salePrices.push(0);
-//         }
-//     }
-
-//     data.forEach(item => {
-//         const saleYear = item["SALE YEAR"];
-//         const saleDate = new Date(item["SALE DATE"] * 86400000); // Convert Excel date to JS date
-//         const quarter = Math.floor((saleDate.getMonth() + 3) / 3);
-//         const index = (saleYear - 2016) * 4 + (quarter - 1);
-//         quarterlyData.salePrices[index] += item["SALE PRICE"];
-//     });
-
-//     return quarterlyData;
-// }
 
 function renderSaleTrendLineChart(data) {
     if (saleTrendChart) {
