@@ -388,12 +388,10 @@ footer .media-icons a:hover {
     border: #2a201c;
     border-radius: 10px;
   }
-
-
 }
   
 
-@media (max-width:360px){
+/* @media (max-width:360px){
   html{
     font-size: 60%;
   }
@@ -424,4 +422,4 @@ footer .media-icons a:hover {
   }
 
 
-}
+} */
