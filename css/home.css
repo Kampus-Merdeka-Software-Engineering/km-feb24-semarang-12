@@ -301,6 +301,9 @@ footer .media-icons a:hover {
 
 @media (max-width:768px){
 
+  html{
+    font-size: 50%;
+  }
 
   .home{
     align-content: center;
@@ -391,10 +394,8 @@ footer .media-icons a:hover {
 }
   
 
-/* @media (max-width:360px){
-  html{
-    font-size: 60%;
-  }
+@media (max-width:360px){
+
 
   section{
     padding: 0 1;
@@ -422,4 +423,4 @@ footer .media-icons a:hover {
   }
 
 
-} */
+}
