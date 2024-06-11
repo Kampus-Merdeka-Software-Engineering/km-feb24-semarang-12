@@ -342,7 +342,7 @@ footer .media-icons a:hover {
   }
 
   .salePriceChart, .propertyUnitChart, .stackedSaleComparisonChart, .unitSalesChart, .saleTrendChart{
-    width: 280px !important;
+    width: 350px !important;
   }
 
 }
@@ -364,7 +364,7 @@ footer .media-icons a:hover {
     justify-content: start;
   }
 
-  .salePriceChart, .propertyUnitChart, .stackedSaleComparisonChart, .unitSalesChart{
+  .salePriceChart, .propertyUnitChart, .stackedSaleComparisonChart, .unitSalesChart, .saleTrendChart{
     width: 280px !important;
     font-size: small;
   }
