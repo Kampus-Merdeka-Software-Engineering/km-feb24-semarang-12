@@ -13,14 +13,10 @@ html{
 }
 
 section{
-    /* padding: 2rem 9%;
-    position: relative;
-    width: 100%;
-    min-height: 100vh; */
     background: #e6e1d7;
 }
+
   /* header */
-  
   .header{
     position: relative;
     display: flex;
@@ -325,13 +321,6 @@ footer .media-icons a:hover {
     font-size: 40%;
   }
 
-  /* .filter-year, .filter-borough, .stat{
-    width: 90%;
-  }
-
-  .chart {
-    grid-template-columns: 1fr;
-  } */
   div#chart{
     grid-gap: 1px;
     gap: 10px;

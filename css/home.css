@@ -232,59 +232,6 @@ section{
 
 /* modal end */
 
-/* aside start*/
-
-.aside-home aside {
-	background-color: #a9b6b6;
-	border: 2px solid #116f86;
-	padding: 10px;
-	width: 300px;
-	margin: 0 0 20px 2px;
-	float: left;
-	box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
-	font-family: "Nunito", sans-serif;
-	border-radius: 10px;
-}
-
-.aside-home aside h2 {
-	font-size: 16px;
-	margin-top: 0;
-	color: #116f86;
-}
-
-.aside-home aside ul {
-	margin: 10px 0 0 0;
-	padding-left: 10px;
-}
-
-.aside-home aside ul li {
-	margin: 0 0 5px 0;
-	list-style-type: circle;
-}
-
-.aside-home aside ul li a {
-	text-decoration: none;
-	color: #000;
-}
-
-.aside-home aside ul li a:hover {
-	color: #116f86;
-	text-decoration: underline;
-}
-
-.aside-home {
-	margin-left: 10px;
-}
-
-.aside-home:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
-
-/* aside end */
-
 /* footer start */
 footer {
     position: fixed;
