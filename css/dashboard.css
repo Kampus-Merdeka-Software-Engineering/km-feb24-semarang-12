@@ -191,6 +191,10 @@ div.stat{
 .salePriceChart {
 	position: relative;
 }
+.salePriceChart canvas{
+	height: 100% !important;
+  object-fit: contain;
+}
 .stat {
 	background: white;
 	padding: 10px;
@@ -338,7 +342,7 @@ footer .media-icons a:hover {
   }
 
   .salePriceChart, .propertyUnitChart, .stackedSaleComparisonChart, .unitSalesChart, .saleTrendChart{
-    width: 350px !important;
+    width: 280px !important;
   }
 
 }
