@@ -369,11 +369,11 @@ footer .media-icons a:hover {
 
 @media (max-width:430px){
   html{
-    font-size: 70%;
+    font-size: 50%;
   }
 
  .home{
-  align-content: center;
+  gap: 0;
  }
 
   .home .content{
@@ -383,15 +383,19 @@ footer .media-icons a:hover {
   .home .image{
     margin-bottom: 20px;
   }
-  
-}
   .home .image img{
     justify-content: center;
     border: #2a201c;
     border-radius: 10px;
   }
 
-/* 
+  footer{
+    position: relative;
+  }
+  
+}
+  
+
 @media (max-width:360px){
   html{
     font-size: 60%;
@@ -423,4 +427,4 @@ footer .media-icons a:hover {
   }
 
 
-} */
+}
