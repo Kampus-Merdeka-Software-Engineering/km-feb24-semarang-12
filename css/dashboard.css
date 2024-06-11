@@ -347,6 +347,21 @@ footer .media-icons a:hover {
 
 }
 
+@media (max-width:390px){
+  .salePriceChart, .propertyUnitChart, .stackedSaleComparisonChart, .unitSalesChart, .saleTrendChart{
+    width: 320px !important;
+    font-size: small;
+  }
+  
+  div.filter-year{
+    width: 320px;
+  }
+
+  div.filter-borough, div.stat{
+    width: 290px;
+  }
+}
+
 @media (max-width:360px){
   div#chart{
     grid-gap: 1px;
