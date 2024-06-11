@@ -306,7 +306,7 @@ footer .media-icons a:hover {
   }
 
   .home{
-    align-content: normal;
+    align-content: space-evenly;
   }
 
   section{
